@@ -14,7 +14,7 @@ export class NewsComponent {
     this.posts = [
       {
         id: 1,
-        author_username: "GOAL",
+        username: "GOAL",
         body: "Khadija Shaw and Erling Haaland have been unstoppable for Man City this season 🔥",
         medias: [
           {
@@ -36,7 +36,7 @@ export class NewsComponent {
       },
       {
         id: 3,
-        author_username: "아니사 🍒|| fml era✨",
+        username: "아니사 🍒|| fml era✨",
         body: "Staff : Get ready for a comeback later\n" +
           "Woozi : When? Don't be sudden..\n" +
           "Staff : In April\n" +

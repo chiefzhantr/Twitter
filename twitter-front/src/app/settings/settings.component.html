@@ -1,1 +1,16 @@
-<p>settings works!</p>
+<body>
+  <h3>settings works!</h3>
+  <form #gfgform = "ngForm">
+    <label> Username:</label><br>
+    <input type="text" name="username" ngModel placeholder="{{this.user.username}}"><br>
+    <label> First name:</label><br>
+    <input type="text" name="first_name" ngModel placeholder="{{this.user.first_name}}"><br>
+    <label> Last name:</label><br>
+    <input type="text" name="last_name" ngModel placeholder="{{this.user.last_name}}"><br>
+    <label> Password: </label><br>
+    <input type="text" name="password" ngModel><br>
+    <label> Phone Number:</label><br>
+    <input type="text" name="phone_number" ngModel placeholder="{{this.user.phone_number}}"><br>
+    <button [formAction]="onSubmit(gfgform)">Submit</button>
+  </form>
+</body>
