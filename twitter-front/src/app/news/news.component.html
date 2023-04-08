@@ -5,9 +5,11 @@
     <h5>
       {{post.username}}
     </h5>
-    <p>
-      {{post.body}}
-    </p>
+    <a [routerLink]="[post.id]">
+      <p>
+        {{post.body}}
+      </p>
+    </a>
     <div *ngFor="let media of post.medias">
       <img src="{{media.url}}">
     </div>
