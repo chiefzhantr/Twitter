@@ -25,7 +25,7 @@ export class NewsComponent {
       },
       {
         id: 2,
-        author_username: "Manchester City",
+        username: "Manchester City",
         body: "🌟 𝑺𝒖𝒑𝒆𝒓 𝑱𝒂𝒄𝒌 🌟",
         medias: [
           {

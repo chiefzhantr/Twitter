@@ -5,14 +5,14 @@
     <h5>
       {{post.username}}
     </h5>
-    <a [routerLink]="[post.id]">
+    <span [routerLink]="[post.id]">
       <p>
         {{post.body}}
       </p>
-    </a>
-    <div *ngFor="let media of post.medias">
-      <img src="{{media.url}}">
-    </div>
+      <div *ngFor="let media of post.medias">
+        <img src="{{media.url}}" class="responsive-image">
+      </div>
+    </span>
   </li>
 </ul>
 </body>
