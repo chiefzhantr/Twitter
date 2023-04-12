@@ -1,20 +1,9 @@
-
-body {
-  width: 800px;
-  max-width: calc(100% - 20px);
-  margin: auto;
-  padding: 80px;
-  position: relative;
-
-  border-radius: 30px;
-}
-
-body > .post {
+body > ul {
   list-style-type: none;
 }
 
-body > .post {
-  padding: 25px;
+body > ul > li{
+  padding: 15px;
   flex-direction: column;
   border: 1px solid rgba(0,0,0,0.25);
 }
@@ -26,23 +15,23 @@ body > .post {
   height: auto;
 }
 
-.post:hover {
+li:hover {
   background-color: rgba(220,220,220,0.40);
 }
 
-body > button {
+body > ul > button {
   width: 800px;
   max-width: calc(100% - 20px);
   margin: auto;
   position: center;
   border: 1px solid rgba(0,0,0,0.25);
 }
-body > ul {
-  list-style-type: none;
-}
+body{
+  width: 800px;
+  max-width: calc(100% - 20px);
+  margin: auto;
+  padding: 80px;
+  position: relative;
 
-body > ul > li{
-  padding: 10px;
-  flex-direction: column;
-  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 30px;
 }
