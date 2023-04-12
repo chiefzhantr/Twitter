@@ -1,0 +1,85 @@
+import { Injectable } from '@angular/core';
+import {Post} from "./post";
+import {Media} from "./media";
+import {Tweet} from "./tweet";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PostService {
+  posts: Post[] = [
+    {
+      id: 1,
+      username: "GOAL",
+      body: "Khadija Shaw and Erling Haaland have been unstoppable for Man City this season 🔥",
+      medias: [
+        {
+          url: "https://pbs.twimg.com/media/FstOeKSXwAIrr0V?format=jpg&name=small",
+          type: true,
+        }
+      ] as Media[]
+    },
+    {
+      id: 2,
+      username: "Manchester City",
+      body: "🌟 𝑺𝒖𝒑𝒆𝒓 𝑱𝒂𝒄𝒌 🌟",
+      medias: [
+        {
+          url: "https://pbs.twimg.com/media/FssnhA2WcAA5Uzh?format=jpg&name=small",
+          type: true,
+        },
+
+      ] as Media[]
+    },
+    {
+      id: 3,
+      username: "아니사 🍒|| fml era✨",
+      body: "Staff : Get ready for a comeback later\n" +
+        "Woozi : When? Don't be sudden..\n" +
+        "Staff : In April\n" +
+        "Woozi & svt members: AH... FxCK MY LIFE\n",
+      medias: [
+        {
+          url: "https://pbs.twimg.com/media/FsuGJcYaMAADre6?format=jpg&name=small",
+          type: true,
+        }
+      ] as Media[]
+    },
+  ] as Post[];
+
+  comments: Tweet[] = [
+    {
+      username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
+      profilePicture: "https://twitter.com/papyfaye1/photo",
+      body: "Was your GOAT doing this at his age?",
+    },
+    {
+      username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
+      profilePicture: "https://twitter.com/papyfaye1/photo",
+      body: "Was your GOAT doing this at his age?",
+    },
+    {
+      username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
+      profilePicture: "https://twitter.com/papyfaye1/photo",
+      body: "Was your GOAT doing this at his age?",
+    },
+    {
+      username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
+      profilePicture: "https://twitter.com/papyfaye1/photo",
+      body: "Was your GOAT doing this at his age?",
+    },
+  ] as Tweet[];
+  constructor() { }
+
+  getPostList() {
+    return this.posts;
+  }
+
+  getPostById(id: Number) {
+    return this.posts.find(post => post.id === id)
+  }
+
+  getTweets() {
+    return this.comments;
+  }
+}

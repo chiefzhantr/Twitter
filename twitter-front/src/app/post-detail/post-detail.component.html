@@ -1,1 +1,32 @@
-<p>post-detail works!</p>
+<body>
+  <h3>Tweet</h3>
+  <div class="post">
+    <h5>
+      {{post.username}}
+    </h5>
+    <span [routerLink]="[post.id]">
+        <p>
+          {{post.body}}
+        </p>
+        <div *ngFor="let media of post.medias">
+          <img src="{{media.url}}" class="responsive-image">
+        </div>
+      </span>
+  </div>
+
+  <button (click)="clickTweets()"> {{showTweets}} </button>
+
+  <ul>
+    <li *ngFor="let tweet of tweets">
+
+      <h5>
+        {{tweet.username}}
+      </h5>
+      <span [routerLink]="[post.id]">
+      <p>
+        {{tweet.body}}
+      </p>
+    </span>
+    </li>
+  </ul>
+</body>
