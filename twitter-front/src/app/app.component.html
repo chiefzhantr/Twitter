@@ -1,3 +1,6 @@
-<app-sidebar></app-sidebar>
+<ng-container *ngIf="showSidebarAndSearchbar()">
+  <app-sidebar></app-sidebar>
+  <app-searchbar></app-searchbar>
+</ng-container>
 <router-outlet>
 </router-outlet>
