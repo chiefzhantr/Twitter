@@ -1,6 +1,6 @@
 .search-panel{
   font-family: sans-serif;
-  position: absolute;
+  position: relative;
   width: 600px;
   height: 50px;
   left: 410px;
