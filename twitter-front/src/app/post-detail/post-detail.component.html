@@ -1,0 +1,32 @@
+<body>
+  <h3>Tweet</h3>
+  <ul>
+    <li>
+      <span class="profile-span">
+        <img src="assets/noavatar.png" class="avatar-image">
+        <a>{{post.username}}</a>
+      </span>
+      <span [routerLink]="[post.id]">
+          <p>
+            {{post.body}}
+          </p>
+          <div *ngFor="let media of post.medias">
+            <img src="{{media.url}}" class="responsive-image">
+          </div>
+      </span>
+    </li>
+    <button (click)="clickTweets()"> {{showTweets}} </button>
+  </ul>
+
+  <ul>
+    <li *ngFor="let tweet of tweets">
+      <span class="profile-span">
+        <img src="assets/noavatar.png" class="avatar-image">
+        <span>
+          <a>{{tweet.username}}</a>
+          <p>{{tweet.body}}</p>
+        </span>
+      </span>
+    </li>
+  </ul>
+</body>

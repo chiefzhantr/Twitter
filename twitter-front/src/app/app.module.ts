@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
 import {FormsModule} from "@angular/forms";
+import { PostDetailComponent } from './post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,14 @@ import {FormsModule} from "@angular/forms";
     NewsComponent,
     ProfileComponent,
     SettingsComponent,
-    LoginSignUpComponent
+    LoginSignUpComponent,
+    PostDetailComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

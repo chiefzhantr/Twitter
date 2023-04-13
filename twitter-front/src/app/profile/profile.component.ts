@@ -9,6 +9,7 @@ import {Post} from "../post";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+
   user: User;
   post: Post;
   constructor() {
