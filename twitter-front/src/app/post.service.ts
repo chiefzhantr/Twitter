@@ -50,22 +50,18 @@ export class PostService {
   comments: Tweet[] = [
     {
       username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
-      profilePicture: "https://twitter.com/papyfaye1/photo",
       body: "Was your GOAT doing this at his age?",
     },
     {
       username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
-      profilePicture: "https://twitter.com/papyfaye1/photo",
       body: "Was your GOAT doing this at his age?",
     },
     {
       username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
-      profilePicture: "https://twitter.com/papyfaye1/photo",
       body: "Was your GOAT doing this at his age?",
     },
     {
       username: "𝐊𝐮𝐫𝐚𝐲𝐚𝐦𝐢",
-      profilePicture: "https://twitter.com/papyfaye1/photo",
       body: "Was your GOAT doing this at his age?",
     },
   ] as Tweet[];

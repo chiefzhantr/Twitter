@@ -2,9 +2,10 @@
   <h3>Tweet</h3>
   <ul>
     <li>
-      <h5>
-        {{post.username}}
-      </h5>
+      <span class="profile-span">
+        <img src="assets/noavatar.png" class="avatar-image">
+        <a>{{post.username}}</a>
+      </span>
       <span [routerLink]="[post.id]">
           <p>
             {{post.body}}
@@ -12,22 +13,20 @@
           <div *ngFor="let media of post.medias">
             <img src="{{media.url}}" class="responsive-image">
           </div>
-        </span>
+      </span>
     </li>
     <button (click)="clickTweets()"> {{showTweets}} </button>
   </ul>
 
   <ul>
     <li *ngFor="let tweet of tweets">
-
-      <h5>
-        {{tweet.username}}
-      </h5>
-      <span [routerLink]="[post.id]">
-      <p>
-        {{tweet.body}}
-      </p>
-    </span>
+      <span class="profile-span">
+        <img src="assets/noavatar.png" class="avatar-image">
+        <span>
+          <a>{{tweet.username}}</a>
+          <p>{{tweet.body}}</p>
+        </span>
+      </span>
     </li>
   </ul>
 </body>
