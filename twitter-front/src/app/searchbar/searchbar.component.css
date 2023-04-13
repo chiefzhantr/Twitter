@@ -1,19 +1,25 @@
 .search-panel{
+  font-family: sans-serif;
   position: absolute;
-  width: 1098.16px;
-  height: 51.68px;
-  left: 410.92px;
-  top: 28.95px;
+  width: 600px;
+  height: 50px;
+  left: 410px;
+  top: 30px;
 
   background: #D9D9D9;
+  border: #D9D9D9;
   border-radius: 30px;
 }
-.search-options{
+.search-options {
   position: absolute;
-  width: 51.44px;
-  height: 51.68px;
-  left: 1531.61px;
-  top: 28.95px;
-
-  background: #D9D9D9;
+  width: 40px;
+  height: 40px;
+  left: 1040px;
+  top: 35px;
+  border: #D9D9D9;
 }
+input{
+  font-size:1.1em;
+  font-weigth:bold;
+}
+

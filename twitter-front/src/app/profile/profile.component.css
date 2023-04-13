@@ -1,0 +1,32 @@
+body{
+  position:relative;
+  padding:5px;
+  left: 250px;
+  top:30px;
+}
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+  width:1000px;
+  position:relative;
+  left:100px;
+  top: 10px;
+  border-bottom: 1px solid black;
+}
+.describing{
+  position: relative;
+  flex-direction: column;
+}
+.follow{
+  width:100px;
+  height:30px;
+  position:relative;
+}
+.user-posts{
+  position:relative;
+  padding:5px;
+  left:90px;
+}
+
+
