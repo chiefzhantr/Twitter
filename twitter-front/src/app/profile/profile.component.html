@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<app-sidebar></app-sidebar>
+<body>
+<div class="flex-container">
+<!--Instead of default picture should be image of person-->
+  <img class="image-profile" src="../../assets/free-icon-profile-6917077.png" width="250" height="250">
+  <div class="describing">
+    <h1><strong>{{this.user.username}}</strong></h1>
+    <p><strong>1 post</strong>&nbsp;&nbsp;&nbsp;<strong>102 followers</strong>&nbsp;&nbsp;&nbsp;<strong>134 following</strong></p>
+    <button class="follow" type="button"><strong>Follow</strong></button>
+    <p>First Name: {{this.user.first_name}}</p>
+    <p>Last Name: {{this.user.last_name}}</p>
+    <p>Phone Number: {{this.user.phone_number}}</p>
+  </div>
+</div>
+<div class="user-posts">
+    <p>{{this.post.id}}.{{this.post.body}}</p>
+    <img src ="../../assets/1.png" height="300px">
+</div>
+</body>

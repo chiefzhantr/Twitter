@@ -9,6 +9,7 @@ import { NewsComponent } from './news/news.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,10 +21,11 @@ import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
     SettingsComponent,
     LoginSignUpComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
