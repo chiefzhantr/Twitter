@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Media } from '../media';
-import { Post } from '../post';
+import { Media } from '../models/media';
+import { Post } from '../models/post';
 import {PostService} from "../post.service";
 
 @Component({

@@ -1,19 +1,23 @@
-<!--<app-sidebar></app-sidebar>-->
 <body>
 <div class="flex-container">
-<!--Instead of default picture should be image of person-->
   <img class="image-profile" src="../../assets/free-icon-profile-6917077.png" width="250" height="250">
   <div class="describing">
-    <h1><strong>{{this.user.username}}</strong></h1>
-    <p><strong>1 post</strong>&nbsp;&nbsp;&nbsp;<strong>102 followers</strong>&nbsp;&nbsp;&nbsp;<strong>134 following</strong></p>
+    <h1><strong>{{user.username}}</strong></h1>
+    <p><strong>{{posts.length}} posts</strong>&nbsp;&nbsp;&nbsp;<strong>102 followers</strong>&nbsp;&nbsp;&nbsp;<strong>134 following</strong></p>
     <button *ngIf="isOwner()" class="follow" type="button"><strong>Follow</strong></button>
-    <p>First Name: {{this.user.first_name}}</p>
-    <p>Last Name: {{this.user.last_name}}</p>
-    <p>Phone Number: {{this.user.phone_number}}</p>
+    <p>First Name: {{user.first_name}}</p>
+    <p>Last Name: {{user.last_name}}</p>
+    <p>Phone Number: {{user.phone_number}}</p>
   </div>
 </div>
-<div class="user-posts">
-    <p>{{this.post.id}}.{{this.post.body}}</p>
-    <img src ="../../assets/1.png" height="300px">
+<div class="post-container" *ngFor="let post of posts">
+  <button class="delete-btn" (click)="deletePost(post)">x</button>
+  <p>{{post.id}}.{{post.body}}</p>
+  <img src="../../assets/{{ post.id }}.png" height="300px">
+<!--  <button class="show-comments-btn" (click)="showComments(post)">Show comments</button>-->
+<!--  <div *ngIf="{{isTweetsShown}}">-->
+<!--    -->
+<!--  </div>-->
 </div>
+
 </body>
