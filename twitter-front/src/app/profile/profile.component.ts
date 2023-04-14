@@ -13,6 +13,8 @@ export class ProfileComponent {
   user: User;
   post: Post;
   constructor() {
+    // this.user = this.getUser()
+    // this.post= this.getPosts()
     this.user = {
       "username": "Dimmyt",
       "first_name": "Ali",
@@ -25,12 +27,15 @@ export class ProfileComponent {
       "user_id": 1,
       "profilePicture": "1.jpeg",
       "body": "MCI:BAY 3:0",
-
-
-
-    } as Post;
+    } as Post
   }
 
+  // private getUser() : User {
+
+  // }
+  // private getPosts() : [Post] {
+
+  // }
 
   onSubmit(f: NgForm) {
     console.log(f.value);
@@ -38,5 +43,11 @@ export class ProfileComponent {
       console.log(x)
     }
     console.log(f.valid);
+  }
+
+  isOwner() {
+    //uncomment when implement loggedUser
+    // return this.user.username == loggedUser.username
+    return false
   }
 }
