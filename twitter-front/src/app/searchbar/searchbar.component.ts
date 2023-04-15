@@ -9,7 +9,16 @@ export class SearchbarComponent {
   selectedOption: string = 'Post';
   searchText: string = '';
 
-  onSearch(): void{
-    console.log('Selected option: ${this.selectedOption}, Search text: ${this.searchText}');
+  onSearch(): void {
+    switch(this.selectedOption) {
+      case 'Post':
+        console.log(`Searching for "${this.searchText}" in Post`);
+        break;
+      case 'Person':
+        console.log(`Searching for "${this.searchText}" in Person`);
+        break;
+      default:
+        console.log(`Unknown option: ${this.selectedOption}`);
+    }
   }
 }
