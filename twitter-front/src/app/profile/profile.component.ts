@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {User} from "../models/user";
 import {NgForm} from "@angular/forms";
 import {Post} from "../models/post";
-import {ApiService} from "../api.service";
+// import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-profile',
