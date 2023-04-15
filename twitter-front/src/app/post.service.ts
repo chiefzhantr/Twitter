@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Post} from "./post";
-import {Media} from "./media";
-import {Tweet} from "./tweet";
+import {Post} from "./models/post";
+import {Media} from "./models/media";
+import {Tweet} from "./models/tweet";
 
 @Injectable({
   providedIn: 'root'

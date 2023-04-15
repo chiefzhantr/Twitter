@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {User} from "../user";
+import {User} from "../models/user";
 
 @Component({
   selector: 'app-settings',

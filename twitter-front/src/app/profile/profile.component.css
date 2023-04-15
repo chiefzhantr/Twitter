@@ -28,5 +28,11 @@ body{
   padding:5px;
   left:90px;
 }
+.post-container {
+  background-color: #F2F2F2;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
 
 
