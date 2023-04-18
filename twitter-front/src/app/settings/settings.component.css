@@ -13,3 +13,7 @@ body{
   flex-wrap: wrap;
   gap: 100px;
 }
+
+form > span {
+  flex-direction: row;
+}
