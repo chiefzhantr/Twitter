@@ -15,7 +15,6 @@ export class PostService {
       medias: [
         {
           url: "https://pbs.twimg.com/media/FstOeKSXwAIrr0V?format=jpg&name=small",
-          type: true,
         }
       ] as Media[]
     },
@@ -26,7 +25,6 @@ export class PostService {
       medias: [
         {
           url: "https://pbs.twimg.com/media/FssnhA2WcAA5Uzh?format=jpg&name=small",
-          type: true,
         },
 
       ] as Media[]
@@ -41,7 +39,6 @@ export class PostService {
       medias: [
         {
           url: "https://pbs.twimg.com/media/FsuGJcYaMAADre6?format=jpg&name=small",
-          type: true,
         }
       ] as Media[]
     },
