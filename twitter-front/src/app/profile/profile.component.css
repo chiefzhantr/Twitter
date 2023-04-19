@@ -35,4 +35,57 @@ body{
 }
 
 
+/*body{*/
+
+/*  width: 800px;*/
+/*  max-width: calc(100% - 20px);*/
+/*  margin: auto;*/
+/*  padding: 50px;*/
+/*  position: relative;*/
+/*background: aqua;*/
+/*  border-radius: 30px;*/
+/*}*/
+
+body > ul {
+  list-style-type: none;
+}
+
+body > ul > li{
+  padding: 15px;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.25);
+}
+
+.responsive-image {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.avatar-image {
+  float: left;
+  margin-right: 10px;
+  width: 100%;
+  max-width: 50px;
+  max-height: 60px;
+}
+
+.profile-span {
+  display: flex;
+}
+
+.profile-span > .avatar-image:hover {
+  background-color: rgba(220,220,220,0.40);
+}
+
+p, a > {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+li:hover {
+  background-color: rgba(220,220,220,0.40);
+}
+
 

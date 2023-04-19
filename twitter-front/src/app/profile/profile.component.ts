@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user";
 import {NgForm} from "@angular/forms";
 import {Post} from "../models/post";
+import {Router} from "@angular/router";
+import {Media} from "../models/media";
 // import {ApiService} from "../api.service";
 
 @Component({
@@ -9,15 +11,22 @@ import {Post} from "../models/post";
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
+
 
   user: User;
   posts: Post[];
+
+  ngOnInit() {
+    this.getUser()
+    this.getPosts()
+  }
+
   constructor(
     // private apiService: ApiService
+    private router: Router
   ) {
-  //   this.user = this.getUser()
-  //   this.posts = this.getPosts()
+    //mock
     this.user = {
       "username": "Dimmyt",
       "first_name": "Ali",
@@ -30,29 +39,54 @@ export class ProfileComponent {
         "username": "Dimmyt",
         "user_id": 1,
         "profilePicture": "1.jpeg",
-        "body": "MCI:BAY 3:0"
+        "body": "MCI:BAY 3:0",
+        "medias": [
+          {
+            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
+          }
+        ] as Media[]
+      } as Post
+    ]
+  }
+  private getUser() {
+    // return this.apiService.getUser(user_id: loggedUser.id).subscribe(posts => this.posts);
+      this.user = {
+        "username": "Dimmyt",
+        "first_name": "Ali",
+        "last_name": "Soldatbay",
+        "phone_number": "+77077441212",
+      } as User;
+  }
+  private getPosts() {
+    // return this.apiService.getPosts(user_id: this.user.id).subscribe(posts => this.posts);
+    this.posts = [
+      {
+        "id":1,
+        "username": "Dimmyt",
+        "user_id": 1,
+        "profilePicture": "1.jpeg",
+        "body": "MCI:BAY 3:0",
+        "medias": [
+          {
+            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
+          }
+        ] as Media[]
       } as Post,
       {
         "id":2,
         "username": "Dimmyt",
         "user_id": 1,
         "profilePicture": "1.jpeg",
-        "body": "Playoffs 1 round - Warriors vs Kings"
+        "body": "Playoffs 1 round - Warriors vs Kings",
+        "medias": [
+          {
+            "url": "https://e7n9s5t9.stackpathcdn.com/articles/wp-content/uploads/2018/12/warriors-vs-kings.jpg",
+          }
+        ] as Media[]
       } as Post
     ]
-
   }
-  //
-  // private getUser() {
-  //   // this.apiService.getUser(username).subscribe((user: User) => {
-  //   //   this.user = user;
-  //   // });
-  //   return this.apiService.mockUsers[0];
-  // }
-  // private getPosts() {
-  //   return this.apiService.mockPosts;
-  // }
-  //
+
   onSubmit(f: NgForm) {
     console.log(f.value);
     for (let x in f.value) {
@@ -61,16 +95,16 @@ export class ProfileComponent {
     console.log(f.valid);
   }
 
-  deletePost(post: Post) {
-    const index = this.posts.indexOf(post);
-    if (index > -1) {
-      this.posts.splice(index, 1);
-    }
-  }
-
   isOwner() {
     //uncomment when implement loggedUser
     // return this.user.username == loggedUser.username
     return false
+  }
+
+  showDetails(id: number) {
+    this.router.navigate(['news/'+id])
+  }
+  showEditPostPage(id: number) {
+    this.router.navigate(['editPost/'+id])
   }
 }
