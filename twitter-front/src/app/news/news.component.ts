@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Media } from '../models/media';
 import { Post } from '../models/post';
 import {PostService} from "../post.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-news',
@@ -12,6 +13,7 @@ export class NewsComponent implements OnInit {
   posts: Post[];
 
   constructor(
+    private router: Router,
     private postService: PostService
   ) {
     this.posts = [] as Post[];
@@ -19,5 +21,11 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.posts = this.postService.getPostList()
+  }
+  showDetails(id: number) {
+    this.router.navigate(['news/'+id])
+  }
+  showEditPost(id: number) {
+    this.router.navigate(['editPost/'+id])
   }
 }
