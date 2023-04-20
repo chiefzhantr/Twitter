@@ -11,6 +11,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
 import {FormsModule} from "@angular/forms";
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     ProfileComponent,
     SettingsComponent,
     LoginSignUpComponent,
-    PostDetailComponent
+    PostDetailComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

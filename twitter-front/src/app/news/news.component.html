@@ -7,7 +7,7 @@
         <a>{{post.username}}</a>
     </span>
 
-    <span [routerLink]="[post.id]">
+    <span (click)="showDetails(post.id)">
       <p>
         {{post.body}}
       </p>

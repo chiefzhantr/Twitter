@@ -1,4 +1,9 @@
 <body>
-  <input type="text" placeholder="  Search" class="search-panel">
-  <img class="search-options" src="https://cdn-icons-png.flaticon.com/512/3986/3986970.png">
+  <input type="text" [(ngModel)]="searchText" class="search-panel">
+  <button (click)="onSearch()" class="search-button">Search</button>
+  <select [(ngModel)]="selectedOption" class="selector">
+    <option value="Post">Post</option>
+    <option value="Person">Person</option>
+  </select>
+
 </body>

@@ -20,6 +20,17 @@
 }
 input{
   font-size:1.1em;
-  font-weigth:bold;
+  font-weight:bold;
+}
+.search-button{
+  position: relative;
+  left: 340px;
+  top:27px;
+}
+.selector{
+  position: relative;
+  left: 370px;
+  top:27px;
+  width:50px;
 }
 
