@@ -6,7 +6,7 @@
         <img src="assets/noavatar.png" class="avatar-image">
         <a>{{post.username}}</a>
       </span>
-      <span>
+      <span [routerLink]="[post.id]">
           <p>
             {{post.body}}
           </p>

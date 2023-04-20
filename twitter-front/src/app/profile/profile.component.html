@@ -10,29 +10,14 @@
     <p>Phone Number: {{user.phone_number}}</p>
   </div>
 </div>
-<body>
-<h3>Tweets</h3>
-<ul>
-  <li *ngFor="let post of posts">
-    <span class="profile-span">
-        <img src="assets/noavatar.png" class="avatar-image">
-        <a>{{post.username}}</a>
-    </span>
-
-    <span (click)="showDetails(post.id)">
-      <p>
-        {{post.body}}
-      </p>
-      <div *ngFor="let media of post.medias">
-        <img src="{{media.url}}" class="responsive-image">
-      </div>
-    </span>
-    <button (click)="showEditPostPage(post.id)">
-      edit
-    </button>
-  </li>
-</ul>
-</body>
-
+<div class="post-container" *ngFor="let post of posts">
+  <button class="delete-btn" (click)="deletePost(post)">x</button>
+  <p>{{post.id}}.{{post.body}}</p>
+  <img src="../../assets/{{ post.id }}.png" height="300px">
+<!--  <button class="show-comments-btn" (click)="showComments(post)">Show comments</button>-->
+<!--  <div *ngIf="{{isTweetsShown}}">-->
+<!--    -->
+<!--  </div>-->
+</div>
 
 </body>
