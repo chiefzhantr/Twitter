@@ -12,6 +12,8 @@ import { LoginSignUpComponent } from './login-sign-up/login-sign-up.component';
 import {FormsModule} from "@angular/forms";
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import {EditPostComponent} from "./edit-post/edit-post.component";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthInterceptor} from "./AuthInterceptor";
 
 @NgModule({
   declarations: [
@@ -28,9 +30,16 @@ import {EditPostComponent} from "./edit-post/edit-post.component";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

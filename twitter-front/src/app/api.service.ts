@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of} from 'rxjs';
 import { User } from 'src/app/models/user';
 import { Post } from 'src/app/models/post';
+import {AuthToken} from "./models/token";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private baseUrl = 'https://twitter.kz/api';
+  // private baseUrl = 'https://twitter.kz/api';
+  BASE_URL="http://localhost:8000"
 
   mockUsers : User[];
   mockPosts : Post[];
@@ -35,6 +37,7 @@ export class ApiService {
 
   }
 
+
   getUser(username: string): Observable<User> {
     //uncomment when api will be ready
     // const url = `${this.baseUrl}/users/${username}`;
@@ -42,7 +45,12 @@ export class ApiService {
     const user = this.mockUsers[0];
     return of(user);
   }
-
+  login(username: string, password: string): Observable<AuthToken> {
+    return this.http.post<AuthToken>(
+      `${this.BASE_URL}/api/login/`,
+      {username, password}
+    )
+  }
   getPosts(username: string): Observable<Post[]> {
     //uncomment when api will be ready
     // const url = `${this.baseUrl}/users/${username}/posts`;

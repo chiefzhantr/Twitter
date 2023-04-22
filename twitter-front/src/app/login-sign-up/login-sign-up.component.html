@@ -1,6 +1,7 @@
 <div class="button-container">
   <button class = "switch-button"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
-</div><form class="login-form" *ngIf="isLogin" (ngSubmit)="onLoginSubmit(username.value, password.value)">
+</div>
+<form class="login-form" *ngIf="isLogin" (ngSubmit)="onLoginSubmit(username.value, password.value)">
   <label>Username:</label>
   <input type="text" #username required placeholder="z_svanov@kbtu.kz">
 

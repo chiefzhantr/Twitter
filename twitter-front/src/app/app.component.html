@@ -1,4 +1,24 @@
-<ng-container *ngIf="showSidebarAndSearchbar()">
+<ng-container *ngIf="!logged">
+  <div class="button-container">
+    <button class = "switch-button"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
+  </div>
+  <div class="login-form">
+    <fieldset>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username">
+    </fieldset>
+
+    <fieldset>
+      <label>Password:</label>
+      <input type="text" [(ngModel)]="password">
+    </fieldset>
+    <button (click)="login()">Login</button>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="logged">
+  <button (click)="logout()">Log out</button>
   <app-sidebar></app-sidebar>
   <app-searchbar></app-searchbar>
 </ng-container>
