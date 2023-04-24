@@ -7,7 +7,10 @@
 <form>
 
   <label for="body">Body:</label>
-  <textarea id="body" name="body"></textarea><br>
+  <textarea id="body" name="body" placeholder="type the new description of the post"></textarea><br>
+
+  <label for="mediaurl">Media url:</label>
+  <textarea id="mediaurl" name="mediaurl" placeholder="paste media url"></textarea><br>
 
   <button type="submit" (click)="updatePost()">Apply Changes</button>
   <button type="button" onclick="deletePost()">Delete Post</button>
