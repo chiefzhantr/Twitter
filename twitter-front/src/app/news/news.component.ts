@@ -25,7 +25,5 @@ export class NewsComponent implements OnInit {
   showDetails(id: number) {
     this.router.navigate(['news/'+id])
   }
-  showEditPost(id: number) {
-    this.router.navigate(['editPost/'+id])
-  }
+
 }
