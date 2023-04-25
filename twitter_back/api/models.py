@@ -1,19 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-"""
-create table user(
-    username varchar(255),
-    first_name varchar(255),
-    last_name varchar(255),
-    profile_picture varchar(255),
-    password varchar (255),
-    phone_number varchar (255),
-)
-"""
 
-
-# Create your models here.
 class User(models.Model):
     username = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
@@ -28,3 +16,30 @@ class User(models.Model):
 
     def __str__(self):
         return f'{self.id}: {self.username}'
+
+
+class Media(models.Model):
+    url = models.TextField(max_length=512)
+
+    class Meta:
+        verbose_name = 'Media'
+        verbose_name_plural = 'Medias'
+
+    def __str__(self):
+        return f'{self.id}: {self.url}'
+
+
+class Post(models.Model):
+    username = models.CharField(max_length=255, null=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', null=False)
+    body = models.TextField(max_length=512, null=False)
+
+    class Meta:
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
+
+    def __str__(self):
+        return f'{self.id}: {self.username}'
+
+    def get_profile_picture(self):
+        return self.user_id.profile_picture
