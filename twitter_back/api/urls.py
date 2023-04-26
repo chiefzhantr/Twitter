@@ -8,7 +8,7 @@ urlpatterns = [
     path("login/", obtain_jwt_token),
     path("users/", views.UserListAPIView.as_view()),
     path("users/<int:id>/", views.UserDetailAPIView.as_view()),
-    path('post/<int:pk>/tweets/', TweetListView.as_view()),
+    path('post/<int:pk>/tweets/', views.TweetListView.as_view()),
 #     path('post/<int:pk>/tweets/create/', TweetCreateView.as_view()),
 #     path('post/<int:pk>/tweets/<int:pk>/update/', TweetUpdateView.as_view()),
 #     path('post/<int:pk>/tweets/<int:pk>/delete/', TweetDeleteView.as_view()),

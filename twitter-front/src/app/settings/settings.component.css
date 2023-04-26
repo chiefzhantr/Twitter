@@ -1,4 +1,7 @@
 body{
+  width:800px;
+  max-width: calc(100% - 20px);
+  /*margin: auto;*/
   padding: 25px;
   position: relative;
   left: 276.75px;
