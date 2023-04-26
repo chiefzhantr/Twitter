@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-from api.models import User, Post, Media
-
+from api.models import User, Post, Media, Tweet
 
 
 class UserSerializer(serializers.ModelSerializer):
