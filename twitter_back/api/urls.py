@@ -8,7 +8,6 @@ urlpatterns = [
     # path("login/", obtain_jwt_token),
     # path("users/", views.UserListAPIView.as_view()),
     # path("users/<int:id>/", views.UserDetailAPIView.as_view())
-    path("news/", views.posts_list),
-    path("news/<int:pk>/", views.post_retrieve)
-
+    # path("news/", views.posts_list),
+    # path("news/<int:pk>/", views.post_retrieve)
 ]
