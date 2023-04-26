@@ -2,7 +2,19 @@
   <div class="button-container">
     <button class = "switch-button"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
   </div>
-  <div class="login-form">
+  <div class="login-form" *ngIf="isLogin">
+    <fieldset>
+      <label>Username:</label>
+      <input type="text" [(ngModel)]="username">
+    </fieldset>
+
+    <fieldset>
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="password">
+    </fieldset>
+    <button (click)="login()">Login</button>
+  </div>
+  <div class="login-form" *ngIf="!isLogin">
     <fieldset>
       <label>Username:</label>
       <input type="text" [(ngModel)]="username">
@@ -12,7 +24,11 @@
       <label>Password:</label>
       <input type="text" [(ngModel)]="password">
     </fieldset>
-    <button (click)="login()">Login</button>
+    <fieldset>
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="email">
+    </fieldset>
+    <button type="submit">Submit</button>
   </div>
 </ng-container>
 

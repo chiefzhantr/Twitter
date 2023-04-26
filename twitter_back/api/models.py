@@ -52,3 +52,18 @@ class Media(models.Model):
 
     def __str__(self):
         return f'{self.id}: {self.url}'
+
+
+class Tweet(models.Model):
+    username = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tweets', null=False)
+    profilePicture = models.CharField(max_length=255)
+    body = models.TextField(max_length=255)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='tweets')
+
+    class Meta:
+        verbose_name = 'Tweet'
+        verbose_name_plural = 'Tweets'
+
+    def __str__(self):
+        return f'{self.post}: {self.username}'

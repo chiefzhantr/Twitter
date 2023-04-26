@@ -5,9 +5,10 @@ body{
   font-family: sans-serif;
   position: absolute;
   width: 225px;
-  height: 800px;
+  height: 1800px;
   left: 30px;
-
+  max-height: calc(100% - 20px);
+  margin: auto;
   border-right: 1px solid black;
   background: #FFFFFF;
 }

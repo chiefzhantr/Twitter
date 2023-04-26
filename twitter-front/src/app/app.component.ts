@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   logged = false;
   username: string = '';
   password: string = '';
+  email: string ='';
   isLogin: boolean = true;
 
   constructor(private apiService: ApiService) {
