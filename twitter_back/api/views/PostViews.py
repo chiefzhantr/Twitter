@@ -22,10 +22,8 @@ def posts_list(request):
         return JsonResponse(objects, safe=False)
     if request.method == 'POST':
         data = json.loads(request.body)
-        medias = None
-        if hasattr(data, 'medias'):
-            medias = data.medias
-            del data['medias']
+        medias = data['medias']
+        del data['medias']
 
         serializer = PostSerializer(data=data)
         serializer.is_valid(raise_exception=True)
@@ -35,9 +33,9 @@ def posts_list(request):
         if medias:
             for media_url in medias:
                 media_serializer = MediaSerializer(
-                    {
+                    data={
                         "url": media_url,
-                        "post_id": serializer.data.id
+                        "post_id": serializer.data['id']
                     }
                 )
 
@@ -60,13 +58,38 @@ def post_retrieve(request, pk):
 
     if request.method == 'GET':
         serializer = PostSerializer(post)
-        return JsonResponse(serializer.data)
+        medias = Media.objects.filter(post_id=pk)
+        media_serializer = MediaSerializer(medias, many=True)
+        return JsonResponse({
+            "medias": media_serializer.data,
+            **serializer.data
+        })
     elif request.method == 'DELETE':
         post.delete()
         return JsonResponse({'deleted': True})
     elif request.method == 'PUT':
         data = json.loads(request.body)
+        medias = data['medias']
+        del data['medias']
+
         serializer = PostSerializer(instance=post, data=data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return JsonResponse(serializer.data)
+
+        media_list = []
+        for media_url in medias:
+            media_serializer = MediaSerializer(
+                data={
+                    "url": media_url,
+                    "post_id": post.id
+                }
+            )
+
+            media_serializer.is_valid(raise_exception=True)
+            media_serializer.save()
+            media_list.append(media_serializer.data)
+
+        return JsonResponse({
+            "medias": media_list,
+            **serializer.data
+        })
