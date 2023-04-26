@@ -35,6 +35,12 @@ class Post(models.Model):
     def get_username(self):
         return self.user_id.username
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+        }
+
 
 class Media(models.Model):
     url = models.TextField(max_length=512)
