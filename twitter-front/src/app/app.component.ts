@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "./api.service";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,8 +14,10 @@ export class AppComponent implements OnInit {
   password: string = '';
   email: string ='';
   isLogin: boolean = true;
+  want_to_register: boolean = false;
+  code : string | null ='';
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private http: HttpClient,) {
   }
 
   ngOnInit(): void {
@@ -22,6 +25,8 @@ export class AppComponent implements OnInit {
     if(token){
       this.logged=true;
     }
+    this.code = this.route.snapshot.queryParamMap.get('code');
+    this.verify();
   }
   login() {
     this.apiService.login(this.username, this.password).subscribe((data) => {
@@ -29,6 +34,7 @@ export class AppComponent implements OnInit {
       this.logged=true;
       this.username = '';
       this.password = '';
+      this.email=''
     //   call functions
     })
   }
@@ -36,14 +42,25 @@ export class AppComponent implements OnInit {
     localStorage.removeItem('token');
     this.logged=false;
   }
-  // showSidebarAndSearchbar() {
-  //   // Get the current route
-  //   const route = this.authService.url;
-  //
-  //   // Return true if the current route is not the login page
-  //   return route !== '/login';
-  // }
-
+  pushedRegister(){
+    this.apiService.register(this.username, this.password, this.email).subscribe((data:any)=>{
+      this.username=''
+      this.password=''
+      this.want_to_register=!this.want_to_register
+    })
+  }
+  verify(){
+    this.apiService.verify(this.code).subscribe(
+      response => {
+        if (response['success']) {
+          console.log('Account confirmed');
+        } else {
+          console.log('Wrong verification code');
+        }
+      },
+      error => console.log('Error')
+    );
+  }
 
   toggleForm() {
     this.isLogin=!this.isLogin;

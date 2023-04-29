@@ -1,66 +1,78 @@
 .login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: black;
+  position: relative;
+  top:200px;
+  width: 400px; /* Ширина формы */
+  margin: auto; /* Центрирование формы */
+  padding: 20px; /* Отступы внутри формы */
+  border: 1px solid #ddd; /* Граница формы */
+  border-radius: 10px;
+  background-color: #fff; /* Фон формы */
 }
 
-.login-form input {
-  width: 300px;
-  padding: 12px;
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 95%; /* Ширина полей ввода */
+  padding: 10px; /* Отступы внутри полей ввода */
+  margin-bottom: 20px; /* Отступ между полями ввода */
+  border: 1px solid #ddd; /* Граница полей ввода */
   border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-
 }
 
 .login-form button {
-  width: 150px;
-  padding: 12px;
+  width: 101%; /* Ширина кнопки */
+  padding: 10px; /* Отступы внутри кнопки */
+  background-color: #3897f0; /* Цвет фона кнопки */
+  color: #fff; /* Цвет текста кнопки */
+  border: none; /* Убрать границу кнопки */
   border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: black;
+  cursor: pointer; /* Изменить курсор при наведении на кнопку */
+}
+.login-form button:hover {
+  background-color: #2684f0; /* Изменить цвет фона кнопки при наведении */
 }
 
 .signup-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  position: relative;
+  top:50px;
+  width: 400px; /* Ширина формы */
+  margin: auto; /* Центрирование формы */
+  padding: 20px; /* Отступы внутри формы */
+  border: 1px solid #ddd; /* Граница формы */
+  border-radius: 10px;
+  background-color: #fff; /* Фон формы */
 }
 
-.signup-form input {
-  width: 300px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
+.signup-form input[type="text"],
+.signup-form input[type="password"], .signup-form input[type="email"] {
 
+  width: 95%; /* Ширина полей ввода */
+  padding: 10px; /* Отступы внутри полей ввода */
+  margin-bottom: 20px; /* Отступ между полями ввода */
+  border: 1px solid #ddd; /* Граница полей ввода */
+  border-radius: 10px;
 }
 
 .signup-form button {
-  width: 150px;
-  padding: 12px;
+  width: 101%; /* Ширина кнопки */
+  padding: 10px; /* Отступы внутри кнопки */
+  background-color: #3897f0; /* Цвет фона кнопки */
+  color: #fff; /* Цвет текста кнопки */
+  border: none; /* Убрать границу кнопки */
   border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: white;
+  cursor: pointer; /* Изменить курсор при наведении на кнопку */
 }
 
-.button-container {
-  display: flex;
-  justify-content: center;
+.signup-form button:hover {
+  background-color: #2684f0; /* Изменить цвет фона кнопки при наведении */
 }
 
-.switch-button {
-  width: 150px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: black;
+.button-is-login {
+  position: relative;
+  top:285px;
+  width: 100px; /* Ширина формы */
+  margin: auto; /* Центрирование формы */
+  padding: 20px; /* Отступы внутри формы */
+  border: none;
+  color: #3897f0;
+  background-color: #fff; /* Фон формы */
 }

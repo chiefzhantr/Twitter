@@ -1,34 +1,27 @@
 <ng-container *ngIf="!logged">
-  <div class="button-container">
-    <button class = "switch-button"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
+  <div class="button-is-login">
+    <button class = "button-is-login"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
   </div>
   <div class="login-form" *ngIf="isLogin">
-    <fieldset>
       <label>Username:</label>
       <input type="text" [(ngModel)]="username">
-    </fieldset>
-
-    <fieldset>
       <label>Password:</label>
       <input type="password" [(ngModel)]="password">
-    </fieldset>
     <button (click)="login()">Login</button>
   </div>
-  <div class="login-form" *ngIf="!isLogin">
-    <fieldset>
+  <div class="signup-form" *ngIf="!isLogin">
       <label>Username:</label>
       <input type="text" [(ngModel)]="username">
-    </fieldset>
-
-    <fieldset>
       <label>Password:</label>
       <input type="text" [(ngModel)]="password">
-    </fieldset>
-    <fieldset>
       <label>Email:</label>
       <input type="email" [(ngModel)]="email">
-    </fieldset>
-    <button type="submit">Submit</button>
+    <button type="submit" (click)="pushedRegister()">Register</button>
+    <form  *ngIf="want_to_register" (ngSubmit)="verify()">
+      <label>Verification code</label>
+      <input type="text" name="code" [(ngModel)]="code">
+      <button type="submit">Confirm</button>
+    </form>
   </div>
 </ng-container>
 

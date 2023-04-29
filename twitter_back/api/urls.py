@@ -6,6 +6,8 @@ from api import views
 urlpatterns = [
     # path("", views.index, name="index"),
     path("login/", obtain_jwt_token),
+    path("register/", views.register),
+    path("verify/", views.verify),
     path("users/", views.ProfileListAPIView.as_view()),
     path("users/<int:id>/", views.ProfileDetailAPIView.as_view()),
     path('post/<int:pk>/tweets/', views.TweetListView.as_view()),

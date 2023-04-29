@@ -37,6 +37,14 @@ export class ApiService {
 
   }
 
+  verify(code: string | null) : Observable<any>{
+    // @ts-ignore
+    return this.http.post(`${this.BASE_URL}/api/verify/`, {code})
+  }
+  // @ts-ignore
+  register(username : String, password : String, email : String) : Observable<any>{
+    return this.http.post(`${this.BASE_URL}/api/register/`,{username, password, email})
+  }
 
   getUser(username: string): Observable<User> {
     //uncomment when api will be ready
@@ -57,5 +65,6 @@ export class ApiService {
     // return this.http.get<Post[]>(url);
     return of(this.mockPosts);
   }
+
 
 }
