@@ -46,8 +46,8 @@ def register(request):
 def send_verification_code(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
-        print(data.get('email'))
-        print(data.get('code'))
+        # print(data.get('email'))
+        # print(data.get('code'))
         email = data.get('email')
         code = data.get('code')
         send_mail(
@@ -57,4 +57,5 @@ def send_verification_code(request):
             [email],
             fail_silently=False,
         )
+
     return JsonResponse({'success': True})
