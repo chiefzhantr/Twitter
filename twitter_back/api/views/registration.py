@@ -57,3 +57,4 @@ def send_verification_code(request):
             [email],
             fail_silently=False,
         )
+    return JsonResponse({'success': True})

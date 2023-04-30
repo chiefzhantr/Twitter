@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
   sendCode() {
     this.code = this.random4DigitString()
     this.apiService.sendCode(this.email, this.code).subscribe((data: any) => {
-
+        console.log("Success")
     })
   }
   verify(){
