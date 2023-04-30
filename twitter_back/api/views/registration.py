@@ -53,7 +53,7 @@ def send_verification_code(request):
         send_mail(
             'Код подтверждения',
             f'Ваш код подтверждения: {code}',
-            'noreply@example.com',
+            'webmaster@localhost',
             [email],
             fail_silently=False,
         )
