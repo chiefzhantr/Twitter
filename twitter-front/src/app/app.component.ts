@@ -17,6 +17,9 @@ export class AppComponent implements OnInit {
   want_to_register: boolean = false;
   code: string = ''
   codeTyped : string = '';
+  firstname : string ='';
+  lastname: string ='';
+  phone : string = '';
 
   constructor(private apiService: ApiService,) {
   }
@@ -61,7 +64,10 @@ export class AppComponent implements OnInit {
   }
   verify(){
       if (this.code == this.codeTyped){
-        this.apiService.register(this.username, this.password, this.email).subscribe((data:any)=>{
+        this.apiService.register(this.username, this.password, this.email, this.firstname, this.lastname, this.phone).subscribe((data:any)=>{
+          this.username = '';
+          this.password = '';
+          this.email=''
           this.isLogin=!this.isLogin
         })
       }

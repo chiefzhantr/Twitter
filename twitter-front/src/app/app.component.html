@@ -3,19 +3,25 @@
     <button class = "button-is-login"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
   </div>
   <div class="login-form" *ngIf="isLogin">
-      <label>User email:</label>
+      <label>Username:</label>
       <input type="text" [(ngModel)]="username">
       <label>Password:</label>
       <input type="password" [(ngModel)]="password">
     <button (click)="login()">Login</button>
   </div>
   <div class="signup-form" *ngIf="!isLogin">
+      <label>First Name:</label>
+      <input type="text" [(ngModel)]="firstname">
+      <label>Last Name:</label>
+      <input type="text" [(ngModel)]="lastname">
       <label>User:</label>
       <input type="text" [(ngModel)]="username">
       <label>Password:</label>
       <input type="text" [(ngModel)]="password">
       <label>Email:</label>
       <input type="email" [(ngModel)]="email">
+      <label>Phone number:</label>
+     <input type="text" [(ngModel)]="phone">
     <button type="submit" (click)="pushedRegister()">Register</button>
     <form  *ngIf="want_to_register" (ngSubmit)="verify()">
       <label>Verification code</label>

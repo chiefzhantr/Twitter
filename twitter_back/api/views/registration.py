@@ -14,12 +14,17 @@ from api.models import Profile
 def register(request):
     if request.method == 'POST':
         data = json.loads(request.body.decode('utf-8'))
+        firstname = data.get('firstname')
+        lastname = data.get('lastname')
+        username = data.get('username')
         email = data.get('email')
         password = data.get('password')
+        phone = data.get('phone')
 
-        user = User.objects.create_user(username=email, email=email, password=password)
+        user = User.objects.create_user(first_name=firstname, last_name=lastname, username=username, email=email,
+                                        password=password)
         user.save()
-        profile = Profile.objects.create(user=user, profile_picture='1.png', phone_number='_')
+        profile = Profile.objects.create(user=user, profile_picture='1.png', phone_number=phone)
         profile.save()
         # # Generate a verification code
         # verification_code = get_random_string(length=10)

@@ -42,8 +42,8 @@ export class ApiService {
   //   return this.http.post(`${this.BASE_URL}/api/verify/`, {code})
   // }
   // @ts-ignore
-  register(username : String, password : String, email : String) : Observable<any>{
-    return this.http.post(`${this.BASE_URL}/api/register/`,{username, password, email})
+  register(username : String, password : String, email : String, firstname: String, lastname : String, phone : String) : Observable<any>{
+    return this.http.post(`${this.BASE_URL}/api/register/`,{username, password, email, firstname, lastname, phone})
   }
   sendCode(email : String, code : String) :Observable<any>{
     return this.http.post(`${this.BASE_URL}/api/send_code/`,{email,code})
