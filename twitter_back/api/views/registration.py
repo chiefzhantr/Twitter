@@ -8,7 +8,10 @@ from django.http import JsonResponse
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
+
         username = request.POST.get('username')
+        if not username:
+            return JsonResponse({'success': False, 'message': 'Username is required'})
         email = request.POST.get('email')
         password = request.POST.get('password')
 
