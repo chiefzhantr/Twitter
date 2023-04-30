@@ -6,7 +6,7 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    profile_picture = models.ImageField(upload_to="avatar")
+    profile_picture = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
 
     class Meta:

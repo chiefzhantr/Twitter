@@ -37,13 +37,16 @@ export class ApiService {
 
   }
 
-  verify(code: string | null) : Observable<any>{
-    // @ts-ignore
-    return this.http.post(`${this.BASE_URL}/api/verify/`, {code})
-  }
+  // verify(code: string | null) : Observable<any>{
+  //   // @ts-ignore
+  //   return this.http.post(`${this.BASE_URL}/api/verify/`, {code})
+  // }
   // @ts-ignore
   register(username : String, password : String, email : String) : Observable<any>{
     return this.http.post(`${this.BASE_URL}/api/register/`,{username, password, email})
+  }
+  sendCode(email : String, code : String) :Observable<any>{
+    return this.http.post(`${this.BASE_URL}/api/send_code/`,{email,code})
   }
 
   getUser(username: string): Observable<User> {

@@ -15,18 +15,23 @@ export class AppComponent implements OnInit {
   email: string ='';
   isLogin: boolean = true;
   want_to_register: boolean = false;
-  code : string | null ='';
+  code: string = ''
+  codeTyped : string = '';
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private http: HttpClient,) {
+  constructor(private apiService: ApiService,) {
   }
-
+  random4DigitString(){
+    const min = 1000;
+    const max = 9999;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+    return randomNumber.toString();
+  };
   ngOnInit(): void {
     const token = localStorage.getItem('token')
     if(token){
       this.logged=true;
     }
-    this.code = this.route.snapshot.queryParamMap.get('code');
-    this.verify();
+    // this.verify();
   }
   login() {
     this.apiService.login(this.username, this.password).subscribe((data) => {
@@ -43,24 +48,27 @@ export class AppComponent implements OnInit {
     this.logged=false;
   }
   pushedRegister(){
-    this.apiService.register(this.username, this.password, this.email).subscribe((data:any)=>{
-      this.username=''
-      this.password=''
       this.want_to_register=!this.want_to_register
+      this.sendCode()
+      // this.isLogin=!this.isLogin;
+  }
+  // @ts-ignore
+  sendCode() {
+    this.code = this.random4DigitString()
+    this.apiService.sendCode(this.email, this.code).subscribe((data: any) => {
+
     })
   }
   verify(){
-    this.apiService.verify(this.code).subscribe(
-      response => {
-        if (response['success']) {
-          console.log('Account confirmed');
-        } else {
-          console.log('Wrong verification code');
-        }
-      },
-      error => console.log('Error')
-    );
-  }
+      if (this.code == this.codeTyped){
+        this.apiService.register(this.username, this.password, this.email).subscribe((data:any)=>{
+          this.isLogin=!this.isLogin
+        })
+      }
+      else{
+        alert("Error")
+      }
+    }
 
   toggleForm() {
     this.isLogin=!this.isLogin;

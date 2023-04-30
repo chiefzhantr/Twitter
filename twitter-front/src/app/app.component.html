@@ -19,7 +19,7 @@
     <button type="submit" (click)="pushedRegister()">Register</button>
     <form  *ngIf="want_to_register" (ngSubmit)="verify()">
       <label>Verification code</label>
-      <input type="text" name="code" [(ngModel)]="code">
+      <input type="text" name="code" [(ngModel)]="codeTyped">
       <button type="submit">Confirm</button>
     </form>
   </div>
