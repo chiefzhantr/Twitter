@@ -33,9 +33,8 @@
 
 
 <ng-container *ngIf="logged">
-  <button (click)="logout()">Log out</button>
+  <p class="logout"><a (click)="logout()">Log out</a>&nbsp;&nbsp;<img class = "image-item" src="https://cdn-icons-png.flaticon.com/512/992/992680.png" width="30px" height="30px" alt="news"></p>
   <app-sidebar></app-sidebar>
-  <app-searchbar></app-searchbar>
 </ng-container>
 <router-outlet>
 </router-outlet>
