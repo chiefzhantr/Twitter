@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
   login() {
     this.apiService.login(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('id', data.user_id);
       this.logged=true;
       this.username = '';
       this.password = '';
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit {
   }
   logout(){
     localStorage.removeItem('token');
+    localStorage.removeItem('id')
     this.logged=false;
   }
   pushedRegister(){

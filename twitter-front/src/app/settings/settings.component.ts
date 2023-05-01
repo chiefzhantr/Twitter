@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import {User} from "../models/user";
+import {SettingsService} from "./settings.service";
 
 @Component({
   selector: 'app-settings',
@@ -8,21 +7,23 @@ import {User} from "../models/user";
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent {
-  user: User;
-  constructor() {
-    this.user = {
-      "username": "Dimmyt",
-      "first_name": "Ali",
-      "last_name": "Soldatbay",
-      "phone_number": "+77077441212",
-    } as User;
+  id: string = '';
+  username: string = '';
+  firstname: string = '';
+  lastname: string = '';
+  password:string ='';
+  phone_number : string ='';
+  constructor(private settingsService: SettingsService) {
+
+  }
+  update(){
+    this.settingsService.updateValues(this.id,this.username,this.firstname,this.lastname,this.password).subscribe((data)=>{
+      this.username='';
+      this.firstname='';
+      this.lastname='';
+      this.password='';
+    })
   }
 
-  onSubmit(f: NgForm) {
-    console.log(f.value);
-    for (let x in f.value) {
-      console.log(x)
-    }
-    console.log(f.valid);
-  }
+
 }

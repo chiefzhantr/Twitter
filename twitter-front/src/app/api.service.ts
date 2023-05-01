@@ -31,7 +31,6 @@ export class ApiService {
         "username": "Dimmyt",
         "first_name": "Ali",
         "last_name": "Soldatbay",
-        "phone_number": "+77077441212",
       } as User
     ];
 

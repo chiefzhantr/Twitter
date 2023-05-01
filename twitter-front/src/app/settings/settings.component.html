@@ -1,24 +1,32 @@
+<head>
+  <title>Settings</title>
+</head>
 <body>
-  <h3>settings page</h3>
-  <div class="flex-container">
-    <form #gfgform = "ngForm">
+  <h1>Settings</h1>
+  <div class="container">
+    <form>
       <label> Username:</label><br>
-      <input type="text" name="username" ngModel placeholder="{{this.user.username}}"><br>
+      <input type="text" name="username" [(ngModel)]="username"><br>
+      <br>
       <label> First name:</label><br>
-      <input type="text" name="first_name" ngModel placeholder="{{this.user.first_name}}"><br>
+      <input type="text" name="first_name" [(ngModel)]="firstname"><br>
+      <br>
       <label> Last name:</label><br>
-      <input type="text" name="last_name" ngModel placeholder="{{this.user.last_name}}"><br>
+      <input type="text" name="last_name" [(ngModel)]="lastname"><br>
+      <br>
       <label> Password: </label><br>
-      <input type="text" name="password" ngModel><br>
+      <input type="text" name="password" [(ngModel)]="password"><br>
+      <br>
       <label> Phone Number:</label><br>
-      <input type="text" name="phone_number" ngModel placeholder="{{this.user.phone_number}}"><br>
-      <button [formAction]="onSubmit(gfgform)">Submit</button>
+      <input type="text" name="phone_number" [(ngModel)]="phone_number"><br>
+      <br>
+      <button (click)="update()">Submit</button>
     </form>
-    <form #aaaa = "ngForm">
+    <form class="avatar">
       <img src="assets/noavatar.png" width="200"> <br>
-      <label> Profile Picture image address: </label> <br>
-      <input type="url" name="profile_picture" ngModel placeholder="{{this.user.profile_picture}}"> <br>
-      <button [formAction]="onSubmit(aaaa)"> change profile picture</button>
+<!--      <label> Profile Picture image address: </label> <br>-->
+<!--      <input type="url" name="profile_picture" ngModel placeholder="{{this.user.profile_picture}}"> <br>-->
+      <button> change profile picture</button>
     </form>
   </div>
 </body>
