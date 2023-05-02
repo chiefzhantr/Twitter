@@ -1,6 +1,4 @@
-body{
-  border-right: 1px solid black;
-}
+
 .sidebar{
   font-family: sans-serif;
   position: absolute;
@@ -9,8 +7,10 @@ body{
   left: 30px;
   max-height: calc(100% - 20px);
   margin: auto;
-  border-right: 1px solid black;
-  background: #FFFFFF;
+  border-radius:30px;
+  border: 1px solid white;
+  background: #f2f2f2;
+  color:black;
 }
 ul{
   font-size:1.2em;

@@ -1,25 +1,24 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
-class User(models.Model):
-    username = models.CharField(max_length=255)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     profile_picture = models.CharField(max_length=255)
-    password = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        verbose_name = 'Profile'
+        verbose_name_plural = 'Profiles'
 
     def __str__(self):
-        return f'{self.id}: {self.username}'
+        return f'{self.profile_picture}: {self.user.username}'
 
 
 class Post(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', null=False)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile', null=False)
     body = models.TextField(max_length=512, null=False)
 
     class Meta:
@@ -27,13 +26,7 @@ class Post(models.Model):
         verbose_name_plural = 'Posts'
 
     def __str__(self):
-        return f'{self.id}: {self.user_id.username}'
-
-    def get_profile_picture(self):
-        return self.user_id.profile_picture
-
-    def get_username(self):
-        return self.user_id.username
+        return f'{self.id}: {self.profile} : {self.body}'
 
     def to_json(self):
         return {

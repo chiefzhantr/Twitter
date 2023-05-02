@@ -1,51 +1,20 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "./api.service";
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'twitter-front';
+export class AppComponent implements OnInit{
   logged = false;
-  username: string = '';
-  password: string = '';
-  email: string ='';
-  isLogin: boolean = true;
-
-  constructor(private apiService: ApiService) {
+  currentUserId = -1;
+  constructor(private apiService: ApiService,) {
+  }
+  ngOnInit() {
+    this.apiService.getCurrentUserId()
+    this.logged = this.apiService.currentUserId!= -1;
   }
 
-  ngOnInit(): void {
-    const token = localStorage.getItem('token')
-    if(token){
-      this.logged=true;
-    }
-  }
-  login() {
-    this.apiService.login(this.username, this.password).subscribe((data) => {
-      localStorage.setItem('token', data.token);
-      this.logged=true;
-      this.username = '';
-      this.password = '';
-    //   call functions
-    })
-  }
-  logout(){
-    localStorage.removeItem('token');
-    this.logged=false;
-  }
-  // showSidebarAndSearchbar() {
-  //   // Get the current route
-  //   const route = this.authService.url;
-  //
-  //   // Return true if the current route is not the login page
-  //   return route !== '/login';
-  // }
-
-
-  toggleForm() {
-    this.isLogin=!this.isLogin;
-  }
 }

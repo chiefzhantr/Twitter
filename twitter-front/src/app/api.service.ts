@@ -8,15 +8,16 @@ import {AuthToken} from "./models/token";
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService{
 
   // private baseUrl = 'https://twitter.kz/api';
   BASE_URL="http://localhost:8000"
-
+  currentUserId = -1;
   mockUsers : User[];
   mockPosts : Post[];
 
   constructor(private http: HttpClient) {
+    this.getCurrentUserId()
     this.mockPosts = [
       {
         "id": 1,
@@ -31,12 +32,22 @@ export class ApiService {
         "username": "Dimmyt",
         "first_name": "Ali",
         "last_name": "Soldatbay",
-        "phone_number": "+77077441212",
       } as User
     ];
 
   }
 
+  // verify(code: string | null) : Observable<any>{
+  //   // @ts-ignore
+  //   return this.http.post(`${this.BASE_URL}/api/verify/`, {code})
+  // }
+  // @ts-ignore
+  register(username : String, password : String, email : String, firstname: String, lastname : String, phone : String) : Observable<any>{
+    return this.http.post(`${this.BASE_URL}/api/register/`,{username, password, email, firstname, lastname, phone})
+  }
+  sendCode(email : String, code : String) :Observable<any>{
+    return this.http.post(`${this.BASE_URL}/api/send_code/`,{email,code})
+  }
 
   getUser(username: string): Observable<User> {
     //uncomment when api will be ready
@@ -56,6 +67,11 @@ export class ApiService {
     // const url = `${this.baseUrl}/users/${username}/posts`;
     // return this.http.get<Post[]>(url);
     return of(this.mockPosts);
+  }
+  getCurrentUserId() {
+    const idString = localStorage.getItem('id');
+    console.log(idString)
+    this.currentUserId = idString ? parseInt(idString) : -1
   }
 
 }

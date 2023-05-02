@@ -1,66 +1,7 @@
-.login-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: black;
-}
-
-.login-form input {
-  width: 300px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-
-}
-
-.login-form button {
-  width: 150px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: black;
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.signup-form input {
-  width: 300px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-
-}
-
-.signup-form button {
-  width: 150px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: white;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-}
-
-.switch-button {
-  width: 150px;
-  padding: 12px;
-  border-radius: 10px;
-  margin: 8px;
-  font-size: 16px;
-  color: black;
+.logout{
+  font-family: sans-serif;
+  font-size: 1.2em;
+  border: none;
+  position: relative;
+  left:70px;
 }

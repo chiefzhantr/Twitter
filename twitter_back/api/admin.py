@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from api.models import User, Post
+from api.models import Post, Profile
 
 
 # Register your models here.
-@admin.register(User)
+@admin.register(Profile)
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'first_name', 'last_name', 'profile_picture', 'password', 'phone_number')
+    list_display = ('user', 'profile_picture', 'phone_number')
 
 
 admin.site.register(Post)

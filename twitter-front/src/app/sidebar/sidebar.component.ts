@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -8,8 +9,10 @@ import {Router} from "@angular/router";
 })
 export class SidebarComponent {
 
-  constructor(private router: Router) {
+  // @ts-ignore
+  constructor(private router: Router, private apiService: ApiService) {
   }
+
   showNews() {
     this.router.navigate(['news'])
   }
@@ -18,5 +21,11 @@ export class SidebarComponent {
   }
   showSettings() {
     this.router.navigate(['settings'])
+  }
+  logout(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('username');
+    this.router.navigate(['login-signup'])
   }
 }

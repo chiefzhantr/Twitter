@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from api.models import User, Post, Media, Tweet
+from api.models import Profile, Post, Media, Tweet
 
 
-class UserSerializer(serializers.ModelSerializer):
+class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('id', 'username', 'first_name', 'last_name', 'profile_picture', 'password', 'phone_number')
+        model = Profile
+        fields = '__all__'
 
 
 class PostSerializer(serializers.ModelSerializer):
