@@ -25,8 +25,9 @@ export class PostDetailComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('postId'));
 
-    // Find the product that correspond with the id provided in route.
-    this.post = this.postService.getPostById(productIdFromRoute) as Post;
+    this.postService.getPostById(productIdFromRoute) .subscribe((post) => {
+      this.post = post;
+    });
   }
 
   clickTweets() {

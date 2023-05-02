@@ -1,28 +1,36 @@
 body{
-  width: 800px;
+
+  width: 600px;
   max-width: calc(100% - 20px);
-  margin: auto;
-  padding: 50px;
-  position: relative;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  font-family: sans-serif;
+  position: absolute;
+  top: 120px;
+  left: 400px;
 
   border-radius: 30px;
 }
-
 
 body > ul {
   list-style-type: none;
 }
 
 body > ul > li{
+  width: 480px;
+  max-width: calc(100% - 20px);
   padding: 15px;
   flex-direction: column;
   border: 1px solid rgba(0,0,0,0.25);
+  background-color: rgba(173, 216, 230, 0.25);
+  border-radius: 30px;
 }
 
 .responsive-image {
   border-radius: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 430px;
   height: auto;
 }
 
@@ -39,17 +47,34 @@ body > ul > li{
 }
 
 .profile-span > .avatar-image:hover {
-  background-color: rgba(220,220,220,0.40);
+  background-color: rgba(173, 216, 230, 0.75);
 }
 
-li:hover {
-  background-color: rgba(220,220,220,0.40);
+p, a > {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
-body > ul > button {
-  width: 800px;
-  max-width: calc(100% - 20px);
-  margin: auto;
-  position: center;
-  border: 1px solid rgba(0,0,0,0.25);
+body > ul > li:hover {
+  background-color: rgba(173, 216, 230, 0.75);
 }
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: gray;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+button:hover {
+  background-color: #0069d9;
+}
+
+button:active {
+  background-color: #005cbf;
+}
+

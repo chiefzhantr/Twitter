@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {SettingsService} from "../settings/settings.service";
+import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../post.service";
 import { Post } from '../models/post';
 
@@ -15,7 +14,7 @@ export class AddPostComponent {
   mediaUrlValue: string;
 
   constructor(
-    // private apiService: ApiService
+    private router: Router,
     private postService: PostService
   ) {
     this.bodyValue = "123";
@@ -35,18 +34,14 @@ export class AddPostComponent {
       return;
     }
 
-    let post = {
+    const post = {
       "body": newBodyValue,
       "username": localStorage.getItem('username'),
     } as Post;
-    console.log(post)
-
-    if (!newBodyValue) {
-      bodyField.value = this.bodyValue;
-    }
-
-    if (!newMediaUrlValue) {
-      mediaUrlField.value = this.mediaUrlValue;
-    }
+    console.log(post);
+    this.postService.createPost(post).subscribe((data)=>{
+      return post
+    })
+    this.router.navigate(['news'])
   };
 }
