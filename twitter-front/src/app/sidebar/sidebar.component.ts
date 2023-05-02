@@ -26,6 +26,6 @@ export class SidebarComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
     localStorage.removeItem('username');
-    this.router.navigate(['login-signup'])
+    this.router.navigate([''])
   }
 }

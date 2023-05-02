@@ -8,10 +8,11 @@ import {PostDetailComponent} from "./post-detail/post-detail.component";
 import {EditPostComponent} from "./edit-post/edit-post.component";
 import {LoginSignUpComponent} from "./login-sign-up/login-sign-up.component";
 const routes: Routes = [
+  {path:'',component: LoginSignUpComponent},
   {path: 'profile', component: ProfileComponent },
   {path: 'news', component: NewsComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'login-signup', component: LoginSignUpComponent},
+  // {path: 'login-signup', component: LoginSignUpComponent},
   {path: 'news/:postId', component: PostDetailComponent},
   {path: 'editPost/:postId', component: EditPostComponent},
 ];

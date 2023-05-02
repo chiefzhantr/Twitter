@@ -1,7 +1,13 @@
 .logout{
+
   font-family: sans-serif;
   font-size: 1.2em;
   border: none;
   position: relative;
   left:70px;
+}
+body{
+  background-image: url("src/assets/back.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }

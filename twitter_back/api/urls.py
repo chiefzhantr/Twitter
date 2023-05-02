@@ -8,6 +8,7 @@ urlpatterns = [
     path("login/", obtain_jwt_token),
     path("register/", views.register),
     path("send_code/", views.send_verification_code),
+    path("update/", views.update),
     path("users/", views.ProfileListAPIView.as_view()),
     path("users/<int:id>/", views.ProfileDetailAPIView.as_view()),
     path('post/<int:pk>/tweets/', views.TweetListView.as_view()),
@@ -18,4 +19,3 @@ urlpatterns = [
     path("news/", views.posts_list),
     path("news/<int:pk>/", views.post_retrieve),
 ]
-
