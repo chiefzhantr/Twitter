@@ -32,6 +32,7 @@ class Post(models.Model):
         return {
             'id': self.id,
             'body': self.body,
+            'username': self.profile.user.username,
         }
 
 
