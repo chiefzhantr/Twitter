@@ -74,6 +74,10 @@ export class PostService {
     return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`);
   }
 
+  createPost(post: Post) {
+    return this.client.post<Post>(`${this.BASE_URL}/api/news/`, post);
+  }
+
   getPostById(id: Number) {
     return this.posts.find(post => post.id === id)
   }

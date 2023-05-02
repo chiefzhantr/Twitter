@@ -1,10 +1,14 @@
 body{
 
-  width: 800px;
+  width: 600px;
   max-width: calc(100% - 20px);
-  margin: auto;
-  padding: 50px;
-  position: relative;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  font-family: sans-serif;
+  position: absolute;
+  top: 120px;
+  left: 400px;
 
   border-radius: 30px;
 }
@@ -14,15 +18,19 @@ body > ul {
 }
 
 body > ul > li{
+  width: 480px;
+  max-width: calc(100% - 20px);
   padding: 15px;
   flex-direction: column;
   border: 1px solid rgba(0,0,0,0.25);
+  background-color: rgba(173, 216, 230, 0.25);
+  border-radius: 30px;
 }
 
 .responsive-image {
   border-radius: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 430px;
   height: auto;
 }
 
@@ -39,7 +47,7 @@ body > ul > li{
 }
 
 .profile-span > .avatar-image:hover {
-  background-color: rgba(220,220,220,0.40);
+  background-color: rgba(173, 216, 230, 0.75);
 }
 
 p, a > {
@@ -47,6 +55,6 @@ p, a > {
   font-size: 14px;
 }
 
-li:hover {
-  background-color: rgba(220,220,220,0.40);
+body > ul > li:hover {
+  background-color: rgba(173, 216, 230, 0.75);
 }

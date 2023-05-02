@@ -1,1 +1,18 @@
-<p>add-post works!</p>
+<head>
+  <title>Edit Post</title>
+</head>
+<body>
+<h1>New Post</h1>
+
+<form>
+
+  <label for="body">Body:</label>
+  <textarea id="body" name="body" placeholder="type the new description of the post"></textarea><br>
+
+  <label for="mediaurl">Media url:</label>
+  <textarea id="mediaurl" name="mediaurl" placeholder="paste media url"></textarea><br>
+
+  <button type="submit" (click)="addPost()">Post new post!</button>
+</form>
+
+</body>
