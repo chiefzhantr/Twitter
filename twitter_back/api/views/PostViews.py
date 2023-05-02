@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from api.models import Post, Media
+from api.models import Post, Media, Profile, User
 from api.serializers import PostSerializer, MediaSerializer
 
 
@@ -22,29 +22,30 @@ def posts_list(request):
         return JsonResponse(objects, safe=False)
     if request.method == 'POST':
         data = json.loads(request.body)
-        medias = data['medias']
-        del data['medias']
+        username = data.get('username', None)
+        text = data.get('body')
+        medias = data.get('uploaded_images', [])
 
-        serializer = PostSerializer(data=data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
+        user = User.objects.get(username=username)
+        profile = Profile.objects.get(user=user)
+        post = Post.objects.create(profile=profile, body=text)
 
         media_list = []
-        if medias:
-            for media_url in medias:
-                media_serializer = MediaSerializer(
-                    data={
-                        "url": media_url,
-                        "post_id": serializer.data['id']
-                    }
-                )
+        for media_url in medias:
+            media_serializer = MediaSerializer(
+                data={
+                    "url": media_url,
+                    "post": post
+                }
+            )
 
-                media_serializer.is_valid(raise_exception=True)
-                media_serializer.save()
-                media_list.append(media_serializer.data)
-
+            media_serializer.is_valid(raise_exception=True)
+            media_serializer.save()
+            media_list.append(media_serializer.data)
+        serializer = PostSerializer(post)
         return JsonResponse({
             "medias": media_list,
+            "username": post.profile.user.username,
             **serializer.data
         })
 
@@ -71,8 +72,15 @@ def post_retrieve(request, pk):
         data = json.loads(request.body)
         medias = data['medias']
         del data['medias']
+        username = data.pop('username')
 
-        serializer = PostSerializer(instance=post, data=data)
+        user = User.objects.get(username=username)
+        profile = Profile.objects.get(user=user)
+
+        serializer = PostSerializer(instance=post, data={
+            "profile": profile,
+            **data
+        })
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
@@ -81,7 +89,7 @@ def post_retrieve(request, pk):
             media_serializer = MediaSerializer(
                 data={
                     "url": media_url,
-                    "post_id": post.id
+                    "post": post.id
                 }
             )
 
@@ -91,5 +99,6 @@ def post_retrieve(request, pk):
 
         return JsonResponse({
             "medias": media_list,
+            "username": post.profile.user.username,
             **serializer.data
         })

@@ -37,7 +37,7 @@ class Post(models.Model):
 
 class Media(models.Model):
     url = models.TextField(max_length=512)
-    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Media'

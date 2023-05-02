@@ -2,9 +2,6 @@ from .serializers import ProfileSerializer  # you have already created UserSeria
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
-    print(dir(user))
-    print(dir(request))
-
     return {
         'token': token,
         'id': str(user.pk),
