@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+from django.template.context_processors import media
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -135,9 +137,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'twitterkz2023@gmail.com' # Replace with your email address
-EMAIL_HOST_PASSWORD = 'ajlbuyqwiryopvgu' # Replace with your email password
+EMAIL_HOST_USER = 'twitterkz2023@gmail.com'  # Replace with your email address
+EMAIL_HOST_PASSWORD = 'ajlbuyqwiryopvgu'  # Replace with your email password
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER':
-    'api.utils.jwt_response_payload_handler',
+        'api.utils.jwt_response_payload_handler',
 }
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
