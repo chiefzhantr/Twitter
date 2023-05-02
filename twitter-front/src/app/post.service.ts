@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Post} from "./models/post";
 import {Media} from "./models/media";
 import {Tweet} from "./models/tweet";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -62,10 +63,15 @@ export class PostService {
       body: "Was your GOAT doing this at his age?",
     },
   ] as Tweet[];
-  constructor() { }
+
+
+  BASE_URL="http://localhost:8000"
+  constructor(
+    private client: HttpClient
+  ) { }
 
   getPostList() {
-    return this.posts;
+    return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`);
   }
 
   getPostById(id: Number) {

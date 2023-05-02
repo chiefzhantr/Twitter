@@ -14,6 +14,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import {EditPostComponent} from "./edit-post/edit-post.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./AuthInterceptor";
+import { AddPostComponent } from './add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {AuthInterceptor} from "./AuthInterceptor";
     SettingsComponent,
     LoginSignUpComponent,
     PostDetailComponent,
-    EditPostComponent
+    EditPostComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

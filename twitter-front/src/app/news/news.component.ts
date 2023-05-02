@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Media } from '../models/media';
 import { Post } from '../models/post';
 import {PostService} from "../post.service";
 import {Router} from "@angular/router";
@@ -20,7 +19,14 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.posts = this.postService.getPostList()
+    this.getPosts();
+  }
+
+  private getPosts() {
+    this.postService.getPostList().subscribe((posts) => {
+      this.posts = posts;
+      console.log(this.posts[0].username)
+    });
   }
   showDetails(id: number) {
     this.router.navigate(['news/'+id])

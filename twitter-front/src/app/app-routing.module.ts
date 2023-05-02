@@ -7,6 +7,7 @@ import {SettingsComponent} from "./settings/settings.component";
 import {PostDetailComponent} from "./post-detail/post-detail.component";
 import {EditPostComponent} from "./edit-post/edit-post.component";
 import {LoginSignUpComponent} from "./login-sign-up/login-sign-up.component";
+import {AddPostComponent} from "./add-post/add-post.component";
 const routes: Routes = [
   {path: 'profile', component: ProfileComponent },
   {path: 'news', component: NewsComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'login-signup', component: LoginSignUpComponent},
   {path: 'news/:postId', component: PostDetailComponent},
   {path: 'editPost/:postId', component: EditPostComponent},
+  {path: 'addPost', component: AddPostComponent},
 ];
 
 @NgModule({
