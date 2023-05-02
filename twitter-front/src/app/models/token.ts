@@ -1,4 +1,5 @@
 export interface AuthToken{
   token:string;
-  user_id:string;
+  id:string;
+  username:string;
 }

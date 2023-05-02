@@ -8,15 +8,16 @@ import {AuthToken} from "./models/token";
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class ApiService{
 
   // private baseUrl = 'https://twitter.kz/api';
   BASE_URL="http://localhost:8000"
-
+  currentUserId = -1;
   mockUsers : User[];
   mockPosts : Post[];
 
   constructor(private http: HttpClient) {
+    this.getCurrentUserId()
     this.mockPosts = [
       {
         "id": 1,
@@ -67,6 +68,10 @@ export class ApiService {
     // return this.http.get<Post[]>(url);
     return of(this.mockPosts);
   }
-
+  getCurrentUserId() {
+    const idString = localStorage.getItem('id');
+    console.log(idString)
+    this.currentUserId = idString ? parseInt(idString) : -1
+  }
 
 }

@@ -137,3 +137,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'twitterkz2023@gmail.com' # Replace with your email address
 EMAIL_HOST_PASSWORD = 'ajlbuyqwiryopvgu' # Replace with your email password
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER':
+    'api.utils.jwt_response_payload_handler',
+}

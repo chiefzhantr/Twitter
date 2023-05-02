@@ -1,40 +1,9 @@
 <ng-container *ngIf="!logged">
-  <div class="button-is-login">
-    <button class = "button-is-login"type="button" (click)="toggleForm()">{{ isLogin ? 'Sign Up' : 'Login' }}</button>
-  </div>
-  <div class="login-form" *ngIf="isLogin">
-      <label>Username:</label>
-      <input type="text" [(ngModel)]="username">
-      <label>Password:</label>
-      <input type="password" [(ngModel)]="password">
-    <button (click)="login()">Login</button>
-  </div>
-  <div class="signup-form" *ngIf="!isLogin">
-      <label>First Name:</label>
-      <input type="text" [(ngModel)]="firstname">
-      <label>Last Name:</label>
-      <input type="text" [(ngModel)]="lastname">
-      <label>User:</label>
-      <input type="text" [(ngModel)]="username">
-      <label>Password:</label>
-      <input type="text" [(ngModel)]="password">
-      <label>Email:</label>
-      <input type="email" [(ngModel)]="email">
-      <label>Phone number:</label>
-     <input type="text" [(ngModel)]="phone">
-    <button type="submit" (click)="pushedRegister()">Register</button>
-    <form  *ngIf="want_to_register" (ngSubmit)="verify()">
-      <label>Verification code</label>
-      <input type="text" name="code" [(ngModel)]="codeTyped">
-      <button type="submit">Confirm</button>
-    </form>
-  </div>
+  <app-login-sign-up></app-login-sign-up>
 </ng-container>
 
-
-<ng-container *ngIf="logged">
-  <p class="logout"><a (click)="logout()">Log out</a>&nbsp;&nbsp;<img class = "image-item" src="https://cdn-icons-png.flaticon.com/512/992/992680.png" width="30px" height="30px" alt="news"></p>
-  <app-sidebar></app-sidebar>
-</ng-container>
+<!--<ng-container *ngIf="logged">-->
+<!--  <app-sidebar></app-sidebar>-->
+<!--</ng-container>-->
 <router-outlet>
 </router-outlet>
