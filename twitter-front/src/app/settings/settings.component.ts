@@ -8,20 +8,16 @@ import {SettingsService} from "./settings.service";
 })
 export class SettingsComponent {
   id: string = '';
-  username: string = '';
-  firstname: string = '';
-  lastname: string = '';
-  password:string ='';
   phone_number : string ='';
   constructor(private settingsService: SettingsService) {
 
   }
   update(){
-    this.settingsService.updateValues(this.id,this.username,this.firstname,this.lastname,this.password).subscribe((data)=>{
-      this.username='';
-      this.firstname='';
-      this.lastname='';
-      this.password='';
+    // @ts-ignore
+    let user_id = parseInt(localStorage.getItem('id'));
+    this.settingsService.updateValues(user_id,this.phone_number).subscribe((data)=>{
+      console.log(this.phone_number)
+        this.phone_number=''
     })
   }
 

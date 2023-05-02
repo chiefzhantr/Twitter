@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {User} from "../models/user";
+import {Profile} from "../models/profile";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class SettingsService{
   constructor(private client: HttpClient) {
   }
 
-  updateValues(user_id:string, username: string, firstname:string, lastname: string, password: string){
-    return this.client.put<User>(`${this.BASE_URL}/api/users/${user_id}`,{username,firstname,lastname,password})
+  updateValues(id:number, phone_number: string){
+    return this.client.post<Profile>(`${this.BASE_URL}/api/update/`,{id,phone_number})
   }
 
 

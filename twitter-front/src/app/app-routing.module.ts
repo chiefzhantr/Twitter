@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent },
   {path: 'news', component: NewsComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'login-signup', component: LoginSignUpComponent},
+  {path: '', component: LoginSignUpComponent},
   {path: 'news/:postId', component: PostDetailComponent},
   {path: 'editPost/:postId', component: EditPostComponent},
   {path: 'addPost', component: AddPostComponent},

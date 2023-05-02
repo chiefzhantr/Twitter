@@ -7,6 +7,7 @@ urlpatterns = [
     # path("", views.index, name="index"),
     path("login/", obtain_jwt_token),
     path("register/", views.register),
+    path("update/", views.update),
     path("send_code/", views.send_verification_code),
     path("users/", views.ProfileListAPIView.as_view()),
     path("users/<int:id>/", views.ProfileDetailAPIView.as_view()),
