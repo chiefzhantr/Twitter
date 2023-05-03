@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
+
   posts: Post[] = [
     {
       id: 1,
@@ -82,7 +83,14 @@ export class PostService {
     return this.client.get<Post>(`${this.BASE_URL}/api/news/${id}`);
   }
 
-  getTweets() {
-    return this.comments;
+  getTweets(id: number) {
+    return this.client.get<{tweets:Tweet[]}>(`${this.BASE_URL}/api/post/${id}/tweets`);
+  }
+
+  postTweet(tweet: Tweet, post_id: number) {
+    let body = tweet.body
+    let profilePicture = tweet.profilePicture
+    let username = tweet.username
+    return this.client.post<{success: Boolean}>(`${this.BASE_URL}/api/post/${post_id}/tweets/create/`,{body,profilePicture,username})
   }
 }

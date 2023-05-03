@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from api.models import Post, Profile
+from api.models import Post, Profile, Tweet
 
 
 # Register your models here.
@@ -10,3 +10,4 @@ class CompanyAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post)
+admin.site.register(Tweet)

@@ -16,6 +16,9 @@
       </span>
     </li>
     <button (click)="clickTweets()"> {{showTweets}} </button>
+<!--    <button *ngIf="isTweetOwner">-->
+<!--      edit tweet-->
+<!--    </button>-->
   </ul>
 
   <ul>
@@ -28,5 +31,15 @@
         </span>
       </span>
     </li>
+    <button (click)="showAddTweet()">
+      leave a tweet
+    </button>
+    <div *ngIf="addingTweet">
+      <form>
+        <label for="tweet-body">Tweet Body:</label>
+        <input type="text" id="tweet-body">
+        <button (click)="addTweetAction()">Add Tweet</button>
+      </form>
+    </div>
   </ul>
 </body>

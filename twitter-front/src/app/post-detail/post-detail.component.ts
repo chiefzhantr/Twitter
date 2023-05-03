@@ -10,6 +10,8 @@ import { Tweet } from '../models/tweet';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
+  addingTweet = true
+  isTweetOwner = true
   post = {} as Post;
   tweets = [] as Tweet[];
   showTweets = 'show Tweets';
@@ -32,11 +34,41 @@ export class PostDetailComponent implements OnInit {
 
   clickTweets() {
     if (this.tweets.length == 0) {
-      this.tweets = this.postService.getTweets();
+      this.postService.getTweets(this.post.id).subscribe((response) => {
+        this.tweets = response.tweets;
+      });
       this.showTweets = 'hide Tweets'
     } else {
       this.tweets = []
       this.showTweets = 'show Tweets';
     }
+  }
+  showAddTweet() {
+
+    this.addingTweet = !this.addingTweet
+  }
+  addTweetAction() {
+    const bodyField = document.getElementById('tweet-body') as HTMLTextAreaElement;
+    const bodyValue = bodyField.value.trim();
+    if (!bodyValue) {
+      alert('You cannot leave nothing, type something');
+      return;
+    }
+    // const author = getUser()
+    const newTweet : Tweet = {
+        username: "321",
+        profilePicture: "123",
+        body: bodyValue
+    } as Tweet
+
+    this.postService.postTweet(newTweet, this.post.id).subscribe((response) => {
+      console.log(response.success)
+      if (response.success) {
+
+        this.tweets.push(newTweet)
+      }
+
+    });
+
   }
 }
