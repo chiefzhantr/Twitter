@@ -24,6 +24,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
+        ordering = ('-id', )
 
     def __str__(self):
         return f'{self.id}: {self.profile} : {self.body}'
@@ -33,6 +34,8 @@ class Post(models.Model):
             'id': self.id,
             'body': self.body,
             'username': self.profile.user.username,
+            'profile_picture': self.profile.profile_picture,
+            'user_id': self.profile.pk
         }
 
 
