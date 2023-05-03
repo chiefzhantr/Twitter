@@ -8,7 +8,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
-
   posts: Post[] = [
     {
       id: 1,
@@ -71,8 +70,10 @@ export class PostService {
     private client: HttpClient
   ) { }
 
-  getPostList() {
-    return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`);
+  getPostList(searchText: string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("search",searchText);
+    return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`, {params: queryParams});
   }
 
   createPost(postBody: Post) {
@@ -81,6 +82,16 @@ export class PostService {
 
   getPostById(id: Number) {
     return this.client.get<Post>(`${this.BASE_URL}/api/news/${id}`);
+  }
+
+  deletePost(id: Number) {
+    return this.client.delete<string>(`${this.BASE_URL}/api/news/${id}`);
+  }
+
+  getPostUsername(id: number) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.client.get<Post[]>(`${this.BASE_URL}/api/profile-post`, {params: queryParams});
   }
 
   getTweets(id: number) {

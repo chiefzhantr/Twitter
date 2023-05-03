@@ -2,8 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../models/user";
 import {NgForm} from "@angular/forms";
 import {Post} from "../models/post";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Media} from "../models/media";
+import { Profile } from '../models/profile';
+import {ApiService} from "../api.service";
+import {PostService} from "../post.service";
 // import {ApiService} from "../api.service";
 
 @Component({
@@ -14,7 +17,7 @@ import {Media} from "../models/media";
 export class ProfileComponent implements OnInit{
 
 
-  user: User;
+  user: Profile;
   posts: Post[];
 
   ngOnInit() {
@@ -24,67 +27,40 @@ export class ProfileComponent implements OnInit{
 
   constructor(
     // private apiService: ApiService
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
+    private apiService: ApiService,
+    private postService: PostService,
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     //mock
     this.user = {
-      "username": "Dimmyt",
-      "first_name": "Ali",
-      "last_name": "Soldatbay",
-      // "phone_number": "+77077441212",
-    } as User;
+    } as Profile;
     this.posts = [
       {
-        "id":1,
-        "username": "Dimmyt",
-        "user_id": 1,
-        "profilePicture": "1.jpeg",
-        "body": "MCI:BAY 3:0",
-        "medias": [
-          {
-            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
-          }
-        ] as Media[]
       } as Post
     ]
   }
   private getUser() {
     // return this.apiService.getUser(user_id: loggedUser.id).subscribe(posts => this.posts);
-    this.user = {
-      "username": "Dimmyt",
-      "first_name": "Ali",
-      "last_name": "Soldatbay",
-      // "phone_number": "+77077441212",
-    } as User;
+    // First get the product id from the current route.
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('id'));
+
+    this.apiService.getProfile(productIdFromRoute).subscribe((user) => {
+      this.user = user;
+    });
   }
   private getPosts() {
-    // return this.apiService.getPosts(user_id: this.user.id).subscribe(posts => this.posts);
-    this.posts = [
-      {
-        "id":1,
-        "username": "Dimmyt",
-        "user_id": 1,
-        "profilePicture": "1.jpeg",
-        "body": "MCI:BAY 3:0",
-        "medias": [
-          {
-            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
-          }
-        ] as Media[]
-      } as Post,
-      {
-        "id":2,
-        "username": "Dimmyt",
-        "user_id": 1,
-        "profilePicture": "1.jpeg",
-        "body": "Playoffs 1 round - Warriors vs Kings",
-        "medias": [
-          {
-            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
-          }
-        ] as Media[]
-      } as Post
-    ]
+    // return this.apiService.getUser(user_id: loggedUser.id).subscribe(posts => this.posts);
+    // First get the product id from the current route.
+    const routeParams = this.route.snapshot.paramMap;
+    const productIdFromRoute = Number(routeParams.get('id'));
+
+    this.postService.getPostUsername(productIdFromRoute).subscribe((posts) => {
+      console.log(posts.length)
+      this.posts = posts;
+    });
   }
 
   onSubmit(f: NgForm) {
@@ -106,5 +82,9 @@ export class ProfileComponent implements OnInit{
   }
   showEditPostPage(id: number) {
     this.router.navigate(['editPost/'+id])
+  }
+
+  addPostPage() {
+    this.router.navigate(['addPost'])
   }
 }

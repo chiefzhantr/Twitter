@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Post} from "../models/post";
+import {PostService} from "../post.service";
 
 @Component({
   selector: 'app-edit-post',
@@ -11,16 +12,14 @@ import {Post} from "../models/post";
 })
 export class EditPostComponent implements OnInit{
 
-  // post: Post;
-  bodyValue: string;
-  mediaUrlValue: string;
+  post: Post;
 
   constructor(
-    // private apiService: ApiService
-    private route: ActivatedRoute
+     private postService: PostService,
+     private route: ActivatedRoute,
+     private router: Router,
   ) {
-    this.bodyValue = "123";
-    this.mediaUrlValue = "321";
+    this.post = {} as Post;
   }
   ngOnInit(): void {
     // First get the product id from the current route.
@@ -28,14 +27,17 @@ export class EditPostComponent implements OnInit{
     const productIdFromRoute = Number(routeParams.get('postId'));
 
     // uncomment when back will be finished.
-    // this.post = this.postService.getPostById(productIdFromRoute) as Post;
-    // this.bodyValue = this.post.body;
-    // this.mediaUrlValue = this.post.mediaUrl;
-
+    this.postService.getPostById(productIdFromRoute) .subscribe((post) => {
+      this.post = post;
+    });
   }
 
   deletePost() {
-//   this.apiService.deletePost(post.id).subs
+    console.log("here!");
+    this.postService.deletePost(this.post.id).subscribe((data)=>{
+      return data
+    })
+    this.router.navigate(['profile/'+this.post.user_id],)
   }
 
   updatePost() {
@@ -43,6 +45,7 @@ export class EditPostComponent implements OnInit{
     const mediaUrlField = document.getElementById('mediaurl') as HTMLTextAreaElement;
     const newBodyValue = bodyField.value.trim();
     const newMediaUrlValue = mediaUrlField.value.trim();
+    console.log(this.post)
 
     if (!newBodyValue && !newMediaUrlValue) {
       alert('You cannot change nothing. If you want to quit, use the sidebar.');
@@ -50,11 +53,9 @@ export class EditPostComponent implements OnInit{
     }
 
     if (!newBodyValue) {
-      bodyField.value = this.bodyValue;
     }
 
     if (!newMediaUrlValue) {
-      mediaUrlField.value = this.mediaUrlValue;
     }
   };
 }

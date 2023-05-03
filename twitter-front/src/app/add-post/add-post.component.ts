@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../post.service";
 import { Post } from '../models/post';
+import { Media } from '../models/media';
 
 @Component({
   selector: 'app-add-post',
@@ -17,7 +18,7 @@ export class AddPostComponent {
     private router: Router,
     private postService: PostService
   ) {
-    this.bodyValue = "123";
+    this.bodyValue = "";
     this.mediaUrlValue = "";
   }
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class AddPostComponent {
       alert('You cannot change nothing. If you want to quit, use the sidebar.');
       return;
     }
-
+    console.log(newMediaUrlValue);
     const post = {
       "body": newBodyValue,
       "username": localStorage.getItem('username'),
@@ -42,6 +43,6 @@ export class AddPostComponent {
     this.postService.createPost(post).subscribe((data)=>{
       return post
     })
-    this.router.navigate(['news'])
+    this.router.navigate(['news'], {queryParams: {searchText: ''}})
   };
 }

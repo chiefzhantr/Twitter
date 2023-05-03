@@ -18,5 +18,6 @@ urlpatterns = [
 
     path("news/", views.posts_list),
     path("news/<int:pk>/", views.post_retrieve),
+    path("profile-post", views.get_posts_by_username)
 ]
 
