@@ -8,13 +8,14 @@
     <h1><strong>{{user.username}}</strong></h1>
     <p>First Name: {{user.first_name}}</p>
     <p>Last Name: {{user.last_name}}</p>
-    <button *ngIf="isOwner()" (click)="addPostPage()">
-      add new post
-    </button>
     <!--    <p>Phone Number: {{user.phone_number}}</p>-->
   </div>
+  <h2>Posts</h2>
+
+  <button *ngIf="isOwner()" (click)="addPostPage()">
+    add new post
+  </button>
 </div>
-<h3>Posts</h3>
 <ul>
   <li *ngFor="let post of posts">
     <span class="profile-span">

@@ -1,16 +1,17 @@
 
 .sidebar{
   overflow: auto;
-  font-family: sans-serif;
+  font-family: Verdana;
   position: fixed;
   width: 225px;
-  height: 1000px;
+  height: 700px;
   left: 30px;
   max-height: calc(100% - 20px);
   margin: auto;
-  border-radius:30px;
-  border: 1px solid white;
-  background: #f2f2f2;
+  margin-top: 25px;
+  border-radius:15px;
+  border: 5px solid snow;
+  background: snow;
   color:black;
   top: 20px;
 }
@@ -18,11 +19,12 @@ ul{
   font-size:1.2em;
   list-style-type:none;
 }
-.li{
+.li {
   display:flex;
   flex-direction: column;
 }
 .element-li{
+  color: #0069d9;
   position:relative;
   padding:7px;
 }

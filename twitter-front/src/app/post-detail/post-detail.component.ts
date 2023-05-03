@@ -71,6 +71,7 @@ export class PostDetailComponent implements OnInit {
       if (response.success) {
 
         this.tweets.push(newTweet)
+        this.addingTweet = !this.addingTweet
       }
 
     });
