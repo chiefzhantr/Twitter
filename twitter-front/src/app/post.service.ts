@@ -76,7 +76,7 @@ export class PostService {
     return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`, {params: queryParams});
   }
 
-  createPost(postBody: Post) {
+  createPost(postBody: { body: string; medias: string[]; username: string | null; }) {
     return this.client.post<Post>(`${this.BASE_URL}/api/news/`, postBody);
   }
 

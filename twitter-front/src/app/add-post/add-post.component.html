@@ -9,8 +9,11 @@
   <label for="body">Body:</label>
   <textarea id="body" name="body" placeholder="type the new description of the post"></textarea><br>
 
-  <label for="mediaurl">Media url:</label>
-  <textarea id="mediaurl" name="mediaurl" placeholder="paste media url"></textarea><br>
+  <form>
+    <label for="tweet-body"> add Media:</label>
+    <input type="text" id="tweet-body">
+    <button (click)="addTweetAction()">Add Media</button>
+  </form> <br>
 
   <button type="submit" (click)="addPost()">Post new post!</button>
 </form>
