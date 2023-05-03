@@ -19,15 +19,12 @@
       </span>
     </li>
     <button (click)="clickTweets()"> {{showTweets}} </button>
-<!--    <button *ngIf="isTweetOwner">-->
-<!--      edit tweet-->
-<!--    </button>-->
   </ul>
 
   <ul>
     <li *ngFor="let tweet of tweets">
     <span class="profile-span">
-      <img src="assets/noavatar.png" class="avatar-image">
+      <img src="{{ tweet.profilePicture }}" class="avatar-image">
       <span>
         <a>{{tweet.username}}</a>
         <p>{{tweet.body}}</p>
