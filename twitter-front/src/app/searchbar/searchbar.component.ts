@@ -18,8 +18,7 @@ export class SearchbarComponent {
   onSearch(): void {
     switch(this.selectedOption) {
       case 'Post':
-        console.log(`Searching for "${this.searchText}" in Post`);
-        this.router.navigate(['news'])
+        this.router.navigate(['news'], {queryParams: {searchText: this.searchText}})
         break;
       case 'Person':
         console.log(`Searching for "${this.searchText}" in Person`);

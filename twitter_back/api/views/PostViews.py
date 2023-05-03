@@ -11,7 +11,11 @@ from api.serializers import PostSerializer, MediaSerializer
 @csrf_exempt
 def posts_list(request):
     if request.method == 'GET':
-        posts = Post.objects.all()
+        text = request.GET.get('search', '')
+        if not text:
+            posts = Post.objects.all().order_by('-id')
+        else:
+            posts = Post.objects.filter(body__contains=text).order_by('-id')
         objects = []
         for post in posts:
             post = post.to_json()

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Post} from "./models/post";
 import {Media} from "./models/media";
 import {Tweet} from "./models/tweet";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -70,8 +70,10 @@ export class PostService {
     private client: HttpClient
   ) { }
 
-  getPostList() {
-    return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`);
+  getPostList(searchText: string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("search",searchText);
+    return this.client.get<Post[]>(`${this.BASE_URL}/api/news/`, {params: queryParams});
   }
 
   createPost(postBody: Post) {

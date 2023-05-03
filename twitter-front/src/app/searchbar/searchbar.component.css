@@ -1,5 +1,6 @@
 body {
   position: fixed;
+  left: 100px;
   z-index: 9;
   margin: 20px;
 }
@@ -8,20 +9,12 @@ body {
   position: relative;
   width: 600px;
   height: 50px;
-  left: 410px;
+  left: 310px;
   top: 30px;
 
   background: #f2f2f2;
-  border: #D9D9D9;
+  border-color: black;
   border-radius: 30px;
-}
-.search-options {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  left: 1040px;
-  top: 35px;
-  border: #D9D9D9;
 }
 input{
   font-size:1.1em;
@@ -29,12 +22,12 @@ input{
 }
 .search-button{
   position: relative;
-  left: 340px;
+  left: 240px;
   top:27px;
 }
 .selector{
   position: relative;
-  left: 370px;
+  left: 270px;
   top:27px;
   width:50px;
 }

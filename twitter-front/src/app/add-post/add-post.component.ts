@@ -42,6 +42,6 @@ export class AddPostComponent {
     this.postService.createPost(post).subscribe((data)=>{
       return post
     })
-    this.router.navigate(['news'])
+    this.router.navigate(['news'], {queryParams: {searchText: ''}})
   };
 }
