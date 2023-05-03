@@ -4,6 +4,7 @@ import {NgForm} from "@angular/forms";
 import {Post} from "../models/post";
 import {Router} from "@angular/router";
 import {Media} from "../models/media";
+import { Profile } from '../models/profile';
 // import {ApiService} from "../api.service";
 
 @Component({
@@ -14,7 +15,7 @@ import {Media} from "../models/media";
 export class ProfileComponent implements OnInit{
 
 
-  user: User;
+  user: Profile;
   posts: Post[];
 
   ngOnInit() {
@@ -28,11 +29,7 @@ export class ProfileComponent implements OnInit{
   ) {
     //mock
     this.user = {
-      "username": "Dimmyt",
-      "first_name": "Ali",
-      "last_name": "Soldatbay",
-      // "phone_number": "+77077441212",
-    } as User;
+    } as Profile;
     this.posts = [
       {
         "id":1,
@@ -54,8 +51,9 @@ export class ProfileComponent implements OnInit{
       "username": "Dimmyt",
       "first_name": "Ali",
       "last_name": "Soldatbay",
-      // "phone_number": "+77077441212",
-    } as User;
+      "profile_picture": "assets/noavatar.png",
+      "phone_number": "+77077441212",
+    } as Profile;
   }
   private getPosts() {
     // return this.apiService.getPosts(user_id: this.user.id).subscribe(posts => this.posts);

@@ -14,7 +14,7 @@ export class SidebarComponent {
   }
 
   showNews() {
-    this.router.navigate(['news'])
+    this.router.navigate(['news'], {queryParams: {searchText: ''}})
   }
   showProfile() {
     this.router.navigate(['profile'])

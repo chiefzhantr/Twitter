@@ -3,17 +3,15 @@
 <app-sidebar></app-sidebar>
 <body>
 <div class="flex-container">
-  <img class="image-profile" src="../../assets/free-icon-profile-6917077.png" width="250" height="250">
+  <img class="image-profile" src="{{user.profile_picture}}" width="250" height="250">
   <div class="describing">
     <h1><strong>{{user.username}}</strong></h1>
-    <p><strong>{{posts.length}} posts</strong>&nbsp;&nbsp;&nbsp;<strong>102 followers</strong>&nbsp;&nbsp;&nbsp;<strong>134 following</strong></p>
     <button *ngIf="isOwner()" class="follow" type="button"><strong>Follow</strong></button>
     <p>First Name: {{user.first_name}}</p>
     <p>Last Name: {{user.last_name}}</p>
 <!--    <p>Phone Number: {{user.phone_number}}</p>-->
   </div>
 </div>
-<body>
 <h3>Tweets</h3>
 <ul>
   <li *ngFor="let post of posts">
@@ -37,5 +35,3 @@
 </ul>
 </body>
 
-
-</body>

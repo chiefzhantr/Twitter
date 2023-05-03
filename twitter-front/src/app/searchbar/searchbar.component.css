@@ -2,7 +2,7 @@ body {
   position: fixed;
   left: 100px;
   z-index: 9;
-  margin: 20px;
+  margin: 10px;
 }
 .search-panel{
   font-family: sans-serif;

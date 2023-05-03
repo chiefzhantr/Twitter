@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../post.service";
 import { Post } from '../models/post';
+import { Media } from '../models/media';
 
 @Component({
   selector: 'app-add-post',
@@ -33,7 +34,7 @@ export class AddPostComponent {
       alert('You cannot change nothing. If you want to quit, use the sidebar.');
       return;
     }
-
+    console.log(newMediaUrlValue);
     const post = {
       "body": newBodyValue,
       "username": localStorage.getItem('username'),
