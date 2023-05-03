@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Post} from "./models/post";
 import {Media} from "./models/media";
 import {Tweet} from "./models/tweet";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
