@@ -1,9 +1,10 @@
 
 .sidebar{
+  overflow: auto;
   font-family: sans-serif;
-  position: absolute;
+  position: fixed;
   width: 225px;
-  height: 1800px;
+  height: 1000px;
   left: 30px;
   max-height: calc(100% - 20px);
   margin: auto;
