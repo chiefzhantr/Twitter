@@ -44,10 +44,10 @@ export class AddPostComponent {
     this.postService.createPost(post).subscribe((data)=>{
       return post
     })
-    this.router.navigate(['news'], {queryParams: {searchText: ''}})
+    this.router.navigate(['profile/'+localStorage.getItem('id')],)
   };
 
-  addTweetAction() {
+  addMedia() {
     const bodyField = document.getElementById('tweet-body') as HTMLTextAreaElement;
     const bodyValue = bodyField.value.trim();
     if (!bodyValue) {

@@ -9,8 +9,11 @@
   <label for="body">Body:</label>
   <textarea id="body" name="body">{{post.body}}</textarea><br>
 
-  <label for="mediaurl">Media url:</label>
-  <textarea id="mediaurl" name="mediaurl">{{post.medias}}</textarea><br>
+  <form>
+    <label for="tweet-body"> add Media:</label>
+    <input type="text" id="tweet-body">
+    <button (click)="addMedia()">Add Media</button>
+  </form> <br>
 
   <button type="submit" (click)="updatePost()">Apply Changes</button>
   <button type="button" (click)="deletePost()">Delete Post</button>

@@ -13,6 +13,7 @@ import {PostService} from "../post.service";
 export class EditPostComponent implements OnInit{
 
   post: Post;
+  media_list: string[];
 
   constructor(
      private postService: PostService,
@@ -20,11 +21,13 @@ export class EditPostComponent implements OnInit{
      private router: Router,
   ) {
     this.post = {} as Post;
+    this.media_list = [];
   }
   ngOnInit(): void {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('postId'));
+    this.media_list = [];
 
     // uncomment when back will be finished.
     this.postService.getPostById(productIdFromRoute) .subscribe((post) => {
@@ -42,20 +45,31 @@ export class EditPostComponent implements OnInit{
 
   updatePost() {
     const bodyField = document.getElementById('body') as HTMLTextAreaElement;
-    const mediaUrlField = document.getElementById('mediaurl') as HTMLTextAreaElement;
-    const newBodyValue = bodyField.value.trim();
-    const newMediaUrlValue = mediaUrlField.value.trim();
-    console.log(this.post)
-
-    if (!newBodyValue && !newMediaUrlValue) {
-      alert('You cannot change nothing. If you want to quit, use the sidebar.');
-      return;
-    }
+    let newBodyValue = bodyField.value.trim();
 
     if (!newBodyValue) {
+      newBodyValue = this.post.body
     }
-
-    if (!newMediaUrlValue) {
-    }
+    const post = {
+      "body": newBodyValue,
+      "medias": this.media_list,
+      "username": localStorage.getItem('username'),
+    };
+    console.log(post);
+    this.postService.updatePost(this.post.id, post).subscribe((data)=>{
+      return post
+    })
+    this.router.navigate(['profile/'+this.post.user_id],)
   };
+
+  addMedia() {
+    const bodyField = document.getElementById('tweet-body') as HTMLTextAreaElement;
+    const bodyValue = bodyField.value.trim();
+    if (!bodyValue) {
+      alert('You cannot leave nothing, type something');
+      return;
+    }
+    this.media_list.push(bodyValue);
+    bodyField.value = "";
+  }
 }
