@@ -18,7 +18,7 @@ export class AddPostComponent {
     private router: Router,
     private postService: PostService
   ) {
-    this.bodyValue = "123";
+    this.bodyValue = "";
     this.mediaUrlValue = "";
   }
   ngOnInit(): void {

@@ -4,7 +4,7 @@ export interface Post {
   id: number;
   username: string;
   user_id: number;
-  profilePicture: string;
+  profile_picture: string;
   body: string;
   medias: Media[];
 }

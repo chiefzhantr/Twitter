@@ -20,20 +20,10 @@ export class ApiService{
   constructor(private http: HttpClient) {
     this.getCurrentUserId()
     this.mockPosts = [
-      {
-        "id": 1,
-        "username": "Dimmyt",
-        "user_id": 1,
-        "profilePicture": "1.jpeg",
-        "body": "MCI:BAY 3:0"
-      } as Post
+      {} as Post
     ];
     this.mockUsers = [
-      {
-        "username": "Dimmyt",
-        "first_name": "Ali",
-        "last_name": "Soldatbay",
-      } as User
+      {} as User
     ];
 
   }

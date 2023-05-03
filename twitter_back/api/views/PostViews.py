@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 
 from api.models import Post, Media, Profile, User
-from api.serializers import PostSerializer, MediaSerializer
+from api.serializers import PostSerializer, MediaSerializer, ProfileSerializer
 
 
 @csrf_exempt
@@ -29,7 +29,7 @@ def posts_list(request):
         data = json.loads(request.body)
         username = data.get('username', None)
         text = data.get('body')
-        medias = data.get('uploaded_images', [])
+        medias = data.get('medias', [])
 
         user = User.objects.get(username=username)
         profile = Profile.objects.get(user=user)
@@ -47,12 +47,9 @@ def posts_list(request):
             media_serializer.is_valid(raise_exception=True)
             media_serializer.save()
             media_list.append(media_serializer.data)
-        serializer = PostSerializer(post)
-        return JsonResponse({
-            "medias": media_list,
-            "username": post.profile.user.username,
-            **serializer.data
-        })
+        data = post.to_json()
+        data["medias"] = media_list
+        return JsonResponse(data)
 
 
 @csrf_exempt
@@ -63,13 +60,11 @@ def post_retrieve(request, pk):
         return JsonResponse({'error': str(e)}, status=404)
 
     if request.method == 'GET':
-        serializer = PostSerializer(post)
         medias = Media.objects.filter(post_id=pk)
-        media_serializer = MediaSerializer(medias, many=True)
-        return JsonResponse({
-            "medias": media_serializer.data,
-            **serializer.data
-        })
+        media_list = MediaSerializer(medias, many=True)
+        data = post.to_json()
+        data["medias"] = media_list.data
+        return JsonResponse(data)
     elif request.method == 'DELETE':
         post.delete()
         return JsonResponse({'deleted': True})
@@ -102,18 +97,15 @@ def post_retrieve(request, pk):
             media_serializer.save()
             media_list.append(media_serializer.data)
 
-        return JsonResponse({
-            "medias": media_list,
-            "username": post.profile.user.username,
-            **serializer.data
-        })
+        data = post.to_json()
+        data["medias"] = media_list
+        return JsonResponse(data)
 
 
 @api_view(['GET'])
 def get_posts_by_username(request):
     id = request.GET.get('id')
     user = User.objects.get(pk=id)
-    print(id)
     profile = Profile.objects.get(user=user)
 
     posts = Post.objects.filter(profile=profile)

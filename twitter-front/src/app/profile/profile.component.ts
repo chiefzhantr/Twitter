@@ -32,21 +32,12 @@ export class ProfileComponent implements OnInit{
     private apiService: ApiService,
     private postService: PostService,
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     //mock
     this.user = {
     } as Profile;
     this.posts = [
       {
-        "id":1,
-        "username": "Dimmyt",
-        "user_id": 1,
-        "profilePicture": "1.jpeg",
-        "body": "MCI:BAY 3:0",
-        "medias": [
-          {
-            "url": "https://www.telegraph.co.uk/content/dam/football/2023/04/11/TELEMMGLPICT000331816105_trans_NvBQzQNjv4BqucMME0J0zUzg7Qbl4GjdiDepFsdpyoBPRlNLqKxJpjg.jpeg",
-          }
-        ] as Media[]
       } as Post
     ]
   }

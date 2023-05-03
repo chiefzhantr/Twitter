@@ -41,4 +41,8 @@ export class NewsComponent implements OnInit {
     this.router.navigate(['news/'+id])
   }
 
+  showAuthor(id: number) {
+    this.router.navigate(['profile/'+id])
+  }
+
 }
