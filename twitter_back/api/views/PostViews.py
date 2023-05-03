@@ -40,7 +40,7 @@ def posts_list(request):
             media_serializer = MediaSerializer(
                 data={
                     "url": media_url,
-                    "post": post
+                    "post": post.id
                 }
             )
 
