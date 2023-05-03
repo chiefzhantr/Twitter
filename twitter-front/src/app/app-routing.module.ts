@@ -9,7 +9,7 @@ import {EditPostComponent} from "./edit-post/edit-post.component";
 import {LoginSignUpComponent} from "./login-sign-up/login-sign-up.component";
 import {AddPostComponent} from "./add-post/add-post.component";
 const routes: Routes = [
-  {path: 'profile', component: ProfileComponent },
+  {path: 'profile/:id', component: ProfileComponent },
   {path: 'news', component: NewsComponent},
   {path: 'settings', component: SettingsComponent},
   {path: 'login-signup', component: LoginSignUpComponent},

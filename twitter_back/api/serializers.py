@@ -9,6 +9,13 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UserSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    username = serializers.CharField(max_length=200)
+    first_name = serializers.CharField(max_length=200)
+    last_name = serializers.CharField(max_length=200)
+
+
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post

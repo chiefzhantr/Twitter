@@ -17,7 +17,7 @@ export class SidebarComponent {
     this.router.navigate(['news'], {queryParams: {searchText: ''}})
   }
   showProfile() {
-    this.router.navigate(['profile'])
+    this.router.navigate(['profile/'+localStorage.getItem('id')])
   }
   showSettings() {
     this.router.navigate(['settings'])

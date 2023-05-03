@@ -43,7 +43,7 @@ export class LoginSignUpComponent {
       this.password = '';
       this.email=''
     })
-    this.router.navigate(['news'])
+    this.router.navigate(['news'], {queryParams: {searchText: ''}})
   }
   pushedRegister(){
     this.want_to_register=!this.want_to_register

@@ -9,10 +9,13 @@
     <button *ngIf="isOwner()" class="follow" type="button"><strong>Follow</strong></button>
     <p>First Name: {{user.first_name}}</p>
     <p>Last Name: {{user.last_name}}</p>
+    <button (click)="addPostPage()">
+      add new post
+    </button>
 <!--    <p>Phone Number: {{user.phone_number}}</p>-->
   </div>
 </div>
-<h3>Tweets</h3>
+<h3>Posts</h3>
 <ul>
   <li *ngFor="let post of posts">
     <span class="profile-span">

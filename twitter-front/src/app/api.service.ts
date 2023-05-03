@@ -4,6 +4,7 @@ import { Observable, of} from 'rxjs';
 import { User } from 'src/app/models/user';
 import { Post } from 'src/app/models/post';
 import {AuthToken} from "./models/token";
+import {Profile} from "./models/profile";
 
 @Injectable({
   providedIn: 'root'
@@ -49,12 +50,8 @@ export class ApiService{
     return this.http.post(`${this.BASE_URL}/api/send_code/`,{email,code})
   }
 
-  getUser(username: string): Observable<User> {
-    //uncomment when api will be ready
-    // const url = `${this.baseUrl}/users/${username}`;
-    // return this.http.get<User>(url);
-    const user = this.mockUsers[0];
-    return of(user);
+  getProfile(id: number): Observable<Profile> {
+    return this.http.get<Profile>(`${this.BASE_URL}/api/users/${id}`);
   }
   login(username: string, password: string): Observable<AuthToken> {
     return this.http.post<AuthToken>(

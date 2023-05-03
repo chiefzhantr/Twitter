@@ -3,6 +3,7 @@ import json
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 from api.models import Post, Media, Profile, User
 from api.serializers import PostSerializer, MediaSerializer
@@ -106,3 +107,22 @@ def post_retrieve(request, pk):
             "username": post.profile.user.username,
             **serializer.data
         })
+
+
+@api_view(['GET'])
+def get_posts_by_username(request):
+    id = request.GET.get('id')
+    user = User.objects.get(pk=id)
+    print(id)
+    profile = Profile.objects.get(user=user)
+
+    posts = Post.objects.filter(profile=profile)
+
+    objects = []
+    for post in posts:
+        post = post.to_json()
+        post_medias = Media.objects.filter(post_id=post["id"])
+        post["medias"] = MediaSerializer(post_medias, many=True).data
+        objects.append(post)
+
+    return JsonResponse(objects, safe=False)

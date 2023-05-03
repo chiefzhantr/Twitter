@@ -84,6 +84,12 @@ export class PostService {
     return this.client.get<Post>(`${this.BASE_URL}/api/news/${id}`);
   }
 
+  getPostUsername(id: number) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("id", id);
+    return this.client.get<Post[]>(`${this.BASE_URL}/api/profile-post`, {params: queryParams});
+  }
+
   getTweets() {
     return this.comments;
   }
