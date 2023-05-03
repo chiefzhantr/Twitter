@@ -23,13 +23,22 @@
 
   <ul>
     <li *ngFor="let tweet of tweets">
-      <span class="profile-span">
-        <img src="assets/noavatar.png" class="avatar-image">
-        <span>
-          <a>{{tweet.username}}</a>
-          <p>{{tweet.body}}</p>
-        </span>
+    <span class="profile-span">
+      <img src="assets/noavatar.png" class="avatar-image">
+      <span>
+        <a>{{tweet.username}}</a>
+        <p>{{tweet.body}}</p>
       </span>
+    </span>
+        <button *ngIf="tweet.username == currentUsername && !editingTweet" (click)="startEditingTweet(tweet.id)">edit tweet</button>
+      <ng-container *ngIf="editingTweet && editingTweetId === tweet.id">
+        <form (ngSubmit)="saveEditedTweet()" #editForm>
+          <textarea [(ngModel)]="editedTweetBody" name="body" id="tweet-body">{{ tweet.body }}</textarea>
+          <button type="submit">Save</button>
+        </form>
+        <button (click)="cancelEditingTweet()">Cancel</button>
+        <button (click)="deleteTweet()">Delete Tweet</button>
+      </ng-container>
     </li>
     <button (click)="showAddTweet()">
       leave a tweet

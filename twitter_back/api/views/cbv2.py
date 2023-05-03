@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseNotAllowed
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
 import json
 
 @csrf_exempt
@@ -42,8 +44,10 @@ def post_tweet_update(request, post_id, tweet_id):
         tweet.body = data.get('body', tweet.body)
         tweet.save()
         return JsonResponse({'success': True})
-    if request.method == "DELETE":
+    elif request.method == "DELETE":
         post = get_object_or_404(Post, id=post_id)
         tweet = get_object_or_404(Tweet, id=tweet_id, post=post)
         tweet.delete()
         return JsonResponse({'success': True})
+    else:
+        return HttpResponse(status=405)  # Method Not Allowed

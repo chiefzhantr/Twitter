@@ -10,9 +10,14 @@ import { Tweet } from '../models/tweet';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  addingTweet = true
-  isTweetOwner = true
+
+  addingTweet = false
+  editingTweet = false;
+  editingTweetId = -1;
+  editedTweetBody = '';
+
   post = {} as Post;
+  currentUsername = localStorage.getItem("username")
   tweets = [] as Tweet[];
   showTweets = 'show Tweets';
 
@@ -26,10 +31,10 @@ export class PostDetailComponent implements OnInit {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('postId'));
-
     this.postService.getPostById(productIdFromRoute) .subscribe((post) => {
       this.post = post;
     });
+
   }
 
   clickTweets() {
@@ -56,7 +61,7 @@ export class PostDetailComponent implements OnInit {
     }
     // const author = getUser()
     const newTweet : Tweet = {
-        username: "321",
+        username: localStorage.getItem("username"),
         profilePicture: "123",
         body: bodyValue
     } as Tweet
@@ -69,6 +74,53 @@ export class PostDetailComponent implements OnInit {
       }
 
     });
-
   }
+  startEditingTweet(tweetId: number) {
+    this.editingTweet = true;
+    this.editingTweetId = tweetId;
+    const tweetToEdit = this.tweets.find(tweet => tweet.id === tweetId);
+    if (tweetToEdit) {
+      this.editedTweetBody = tweetToEdit.body;
+    } else {
+      console.error(`Could not find tweet with id ${tweetId}`);
+    }
+  }
+  saveEditedTweet() {
+    const tweet = this.tweets.find(tweet => tweet.id === this.editingTweetId);
+    if(tweet == undefined) {return}
+    if(tweet.body == this.editedTweetBody || this.editedTweetBody == '') {
+      alert("Type something new")
+      this.editingTweet = false;
+      this.editingTweetId = -1;
+      return
+    }
+    tweet.body = this.editedTweetBody;
+
+    this.postService.updateTweet(tweet, this.post.id).subscribe((response) => {
+      console.log(response.success)
+      if (response.success) {
+        this.editingTweet = false;
+        this.editingTweetId = -1;
+      }
+    });
+  }
+  cancelEditingTweet() {
+    this.editingTweet = false;
+    this.editingTweetId = -1;
+  }
+  deleteTweet() {
+    this.postService.deleteTweet(this.editingTweetId, this.post.id).subscribe((response) => {
+      console.log(response.success);
+      if (response.success) {
+        const tweetIndex = this.tweets.findIndex(tweet => tweet.id === this.editingTweetId);
+        if (tweetIndex > -1) {
+          this.tweets.splice(tweetIndex, 1);
+        }
+        this.editingTweet = false;
+        this.editingTweetId = -1;
+      }
+    });
+  }
+
+
 }

@@ -104,4 +104,16 @@ export class PostService {
     let username = tweet.username
     return this.client.post<{success: Boolean}>(`${this.BASE_URL}/api/post/${post_id}/tweets/create/`,{body,profilePicture,username})
   }
+
+  updateTweet(tweet: Tweet, post_id: number) {
+    let body = tweet.body
+    let profilePicture = tweet.profilePicture
+    let username = tweet.username
+    console.log(tweet.id)
+    return this.client.put<{success: Boolean}>(`${this.BASE_URL}/api/post/${post_id}/tweets/update/${tweet.id}`,{body,profilePicture,username})
+  }
+
+  deleteTweet(tweet_id: number, post_id:number) {
+    return this.client.delete<{success: Boolean}>(`${this.BASE_URL}/api/post/${post_id}/tweets/update/${tweet_id}`,{})
+  }
 }
