@@ -1,4 +1,4 @@
-from api.models import Tweet, Post
+from api.models import Tweet, Post, Profile
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -21,13 +21,15 @@ def post_tweets(request, id):
     if request.method == "POST":
         post = get_object_or_404(Post, id=id)
         data = json.loads(request.body)
-        print('USERNAME:')
-        print(data.get('username'))
-        print(data.get('profilePicture'))
-        print(data.get('body'))
+        profileId = data.get('profileId'),
+        profile = get_object_or_404(Profile, pk=profileId)
+#         print('USERNAME:')
+#         print(data.get('username'))
+#         print(data.get('profilePicture'))
+#         print(data.get('body'))
         tweet = Tweet.objects.create(
             username=data.get('username'),
-            profilePicture=data.get('profilePicture'),
+            profilePicture= profile.profile_picture,
             body=data.get('body'),
             post=post
         )

@@ -6,10 +6,9 @@
   <img class="image-profile" src="{{user.profile_picture}}" width="250" height="250">
   <div class="describing">
     <h1><strong>{{user.username}}</strong></h1>
-    <button *ngIf="isOwner()" class="follow" type="button"><strong>Follow</strong></button>
     <p>First Name: {{user.first_name}}</p>
     <p>Last Name: {{user.last_name}}</p>
-    <button (click)="addPostPage()">
+    <button *ngIf="isOwner()" (click)="addPostPage()">
       add new post
     </button>
     <!--    <p>Phone Number: {{user.phone_number}}</p>-->
@@ -19,7 +18,7 @@
 <ul>
   <li *ngFor="let post of posts">
     <span class="profile-span">
-        <img src="assets/noavatar.png" class="avatar-image">
+        <img src = "{{post.profile_picture}}" class="avatar-image">
         <a>{{post.username}}</a>
     </span>
 
@@ -31,7 +30,7 @@
         <img src="{{media.url}}" class="responsive-image">
       </div>
     </span>
-    <button (click)="showEditPostPage(post.id)">
+    <button *ngIf="isOwner()" (click)="showEditPostPage(post.id)">
       edit
     </button>
   </li>

@@ -72,9 +72,7 @@ export class ProfileComponent implements OnInit{
   }
 
   isOwner() {
-    //uncomment when implement loggedUser
-    // return this.user.username == loggedUser.username
-    return false
+    return String(this.user.id) == localStorage.getItem('id')
   }
 
   showDetails(id: number) {
@@ -87,4 +85,6 @@ export class ProfileComponent implements OnInit{
   addPostPage() {
     this.router.navigate(['addPost'])
   }
+
+  protected readonly localStorage = localStorage;
 }
