@@ -14,6 +14,7 @@ export class AppComponent implements OnInit{
   }
   ngOnInit() {
     this.apiService.getCurrentUserId()
+    console.log("124124")
     this.logged = this.apiService.currentUserId!= -1;
   }
 
