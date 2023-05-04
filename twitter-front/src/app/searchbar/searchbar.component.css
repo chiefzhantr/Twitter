@@ -5,29 +5,38 @@ body {
   margin: 10px;
 }
 .search-panel{
-  font-family: sans-serif;
+  font-family: Verdana;
   position: relative;
   width: 600px;
   height: 50px;
   left: 310px;
   top: 30px;
 
-  background: #f2f2f2;
+  background: white;
   border-color: black;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 input{
+  color: #0069d9;
   font-size:1.1em;
   font-weight:bold;
 }
 .search-button{
+  font-family: Verdana;
+  background: white;
+  color: #0069d9;
   position: relative;
   left: 230px;
   top:27px;
 }
 .selector{
+  font-family: Verdana;
   position: relative;
   left: 270px;
   top:27px;
-  width:50px;
+  width:70px;
+  height: 30px;
+  border-radius: 10px;
+  background: white;
+  color: #0069d9;
 }

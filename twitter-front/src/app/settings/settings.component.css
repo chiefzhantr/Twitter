@@ -1,19 +1,20 @@
 body {
   background-color: #f2f2f2;
-  font-family: sans-serif;
+  font-family: Verdana;
   position: relative;
-  top: 10px;
+  top: 20px;
   left: 500px;
   width: 500px;
   margin: 0;
   padding: 0;
   height:600px;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 h1 {
+  color: #0069d9;
   font-size: 36px;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 .container{
   display: flex;
@@ -21,7 +22,7 @@ h1 {
   max-width: 800px;
   margin: 50px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #f2f2f2;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 label {
@@ -39,13 +40,13 @@ form input{
   gap: 100px;
 }
 button {
-  width: 101%; /* Ширина кнопки */
-  padding: 10px; /* Отступы внутри кнопки */
-  background-color: #3897f0; /* Цвет фона кнопки */
-  color: #fff; /* Цвет текста кнопки */
-  border: none; /* Убрать границу кнопки */
+  width: 101%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  color: #0069d9;
+  border: none;
   border-radius: 10px;
-  cursor: pointer; /* Изменить курсор при наведении на кнопку */
+  cursor: pointer;
 }
 .avatar{
   position: relative;
@@ -53,5 +54,10 @@ button {
 }
 
 button:hover {
-  background-color: #2684f0;
+  background-color: snow;
+  border: 1px solid #0069d9;
+}
+
+input {
+  border-color: #0069d9;
 }

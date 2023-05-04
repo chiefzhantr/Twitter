@@ -1,16 +1,24 @@
-body{
+h1{
+  text-align: center;
+  color: #0069d9;
+}
 
-  width: 600px;
+ul {
+  align-content: center;
+}
+
+body {
+  width: 50%;
   max-width: calc(100% - 20px);
   margin: 20px;
   padding: 10px;
   background-color: #f2f2f2;
-  font-family: sans-serif;
+  font-family: Verdana;
   position: absolute;
   top: 120px;
   left: 400px;
 
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 body > ul {
@@ -22,9 +30,9 @@ body > ul > li{
   max-width: calc(100% - 20px);
   padding: 15px;
   flex-direction: column;
-  border: 1px solid rgba(0,0,0,0.25);
-  background-color: rgba(173, 216, 230, 0.25);
-  border-radius: 30px;
+  border: 1px solid #0069d9;
+  background-color: #f2f2f2;
+  border-radius: 10px;
 }
 
 .responsive-image {
@@ -37,9 +45,9 @@ body > ul > li{
 .avatar-image {
   float: left;
   margin-right: 10px;
-  width: 100%;
-  max-width: 50px;
-  max-height: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
 }
 
 .profile-span {
@@ -47,22 +55,22 @@ body > ul > li{
 }
 
 .profile-span > .avatar-image:hover {
-  background-color: rgba(173, 216, 230, 0.75);
+  background-color: snow;
 }
 
 p, a > {
-  font-family: Arial, sans-serif;
+  font-family: Verdana;
   font-size: 14px;
 }
 
 body > ul > li:hover {
-  background-color: rgba(173, 216, 230, 0.75);
+  background-color: snow;
 }
 
 button {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: gray;
+  padding: 5px 20px;
+  background-color: #f2f2f2;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -71,10 +79,38 @@ button {
   margin-right: 10px;
 }
 button:hover {
-  background-color: #0069d9;
+  background-color: snow;
+  border: 1px solid #0069d9;
 }
 
-button:active {
-  background-color: #005cbf;
+button {
+  color: #005cbf;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  color: #0069d9;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
